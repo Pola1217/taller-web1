@@ -1,0 +1,298 @@
+@font-face {
+    font-family: Suisse;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseMono;
+    src: url('../fonts/SuisseMono.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseBook;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: Windsor;
+    src: url('../fonts/Windsor-Bold.ttf');
+
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.align_items_center{
+    align-items: center;    
+}
+
+header{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    height: 70px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav{
+    justify-content: space-between;
+}
+
+.logo{
+position: absolute;
+width: 208px;
+height: 24px;
+left: 42.5%;
+}
+
+.menu__item {
+    font-family: 'Suisse' ;
+    font-size: 12px;
+    margin: 0 5px;
+    padding: 5px 5px;
+    position: relative;
+}
+
+.menu__item a{
+    color:rgb(0, 0, 0);
+}
+
+.menu__item:hover{
+    background-color: rgb(160, 196, 172);
+    border-radius: 20px;
+}
+
+.landind__pic{
+    width: 1425px;
+    height: 799px;
+}
+
+.quote{
+    position: absolute;
+    width: 456px;
+    height: 190px;    
+    left: 70px;
+    top: 70px;
+}
+
+.promo_text{
+    position: absolute;
+    width: 475px;
+    height: 87px;
+    left: 125px;
+    top: 380px;
+
+    font-family: 'SuisseMono';
+    color: blue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.btn1{
+    position: absolute;
+    width: 314px;
+    height: 88px;
+    left: 201px;
+    top: 500px;
+    background: #FFFAE9;
+    border: 2px solid #1DD000;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: blue;
+    font-size: 16px;
+}
+
+.container{
+    position: absolute;
+}
+
+
+.news__container{
+    position: relative;
+    display:flex;
+    align-items: center;
+    flex-direction:row;
+    padding: 50px;
+    margin-top: 780px;
+}
+
+.news{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom: 3px solid #000000;
+    width: 100%;
+    height: 260px;
+    box-sizing: border-box;
+}
+
+.box{
+    margin: 25px;
+    width: 390px;
+    height: 500px;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.box h2{
+    font-family: 'SuisseMono';
+    font-size: 20px;
+    color: white;
+    text-align:center;
+    background-color: black;
+    width: 140px;
+    padding: 5px;
+    margin: 5px 0 0 30px;
+}
+
+.box p{
+    font-family: 'Suisse';
+    font-size: 18px;
+    text-align:left;
+    width: 320px;
+    height: 40px;
+    /*padding: 5px;*/
+    margin: 20px 0 0 30px;
+}
+
+.box button{
+    width: 214px;
+    height: 68px;
+    margin: 40px 0 0 80px;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 11px;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    background-color: white;
+}
+
+.subtitles{
+    font-family: 'Windsor';
+    font-size: 55px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+.t__description{
+    font-family: 'SuisseMono';
+    margin-left: 60px;
+    margin-bottom: 5px;
+}
+
+.product{
+    padding: 45px;
+    list-style-type: none;
+}
+
+.product h2, .product p{
+    padding: 0;
+    margin-left: 45px;
+    font-family: 'Suisse';
+    
+}
+
+.product h4{
+    padding: 0;
+    margin-top: 15px;
+    margin-left: 45px;
+    font-family: 'SuisseMono';
+    font-size: 20px;
+}
+
+.product button{
+    width: 214px;
+    height: 68px;
+    margin: 50px 0 0 55px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    background-color:#ff5f37;
+    border: none;
+}
+
+.products{
+    max-width: 100%;
+    margin:0 45px 25px 45px;
+}
+
+.banner{
+    position:absolute;
+    margin-top: 90px;
+    width: 214px;
+    height: 68px;
+}
+
+.banner__refer{
+    margin-top: 600px;
+    width: 1400px;
+    height: 350px;
+    background-color: black;
+    box-sizing: border-box;
+}
+
+.banner__refer h1{
+    font-family: 'Windsor';
+    color: white;
+}
+
+.banner__refer p{
+    font-family: 'SuisseMono';
+    color: white;
+    width: 250px;
+    text-align: center;
+}
+
+.banner__refer button{
+    width: 214px;
+    height: 68px;
+    margin: 50px 0 0 55px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    background-color:#ff5f37;
+    border: none;
+}
+
+.refer__title{
+    margin: 100px 100px 100px 100px;
+    width: 220px;
+    height: 30px;
+    font-family: 'SuisseMono';
+    color: white;
+    background-color: rgb(190, 255, 70);
+    box-sizing: border-box;
+    text-align: center;
+}
+
