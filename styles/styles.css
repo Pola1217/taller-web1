@@ -84,12 +84,16 @@ left: 42.5%;
 }
 
 .container{
+    background-image: linear-gradient(180.77deg, #FFFAE9 45.73%, #9EB3FE 85.72%, #7997FF 97.63%);
+    height: 788px;
     position: relative;
 }
 
 .landind__pic{
-    width: 100%;
-    height: 799px;
+    width: 50%;
+    
+    position:relative;
+    left: 50%;
 }
 
 .landing__descrip {
@@ -259,6 +263,67 @@ left: 42.5%;
     margin:0 45px 25px 45px;
 }
 
+.article_promo {
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+}
+
+.article_promo_text {
+    display: flex;
+    flex-direction: column;
+    margin: 70px;
+}
+
+.article_promo_text h2{
+    font-family: 'Suisse';
+    font-size: 60px;
+    letter-spacing: 4px;
+    width: 100%;
+    text-align: left;
+    justify-content: center;
+}
+
+.article__caract {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.caract_item a{
+    font-family: 'SuisseMono';
+    padding: 10px;
+    border: 3px solid #000000;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    width: 100%;
+    height: 60px;
+    border-radius: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.caract_item:hover{
+    background-color: rgb(160, 196, 172);
+    border-radius: 91px;
+}
+
+.article_promo_text p{
+    font-family: 'SuisseMono';
+    width: 80%;
+    height: 20px;
+}
+
+.img_article {
+    width: 40%;
+    border: 5px #000000;
+}
+ 
 .banner{
     position: relative;
     margin-top: 90px;
@@ -311,46 +376,31 @@ left: 42.5%;
     justify-content: center;
     margin-top: 30px;
 }
+
 .footer{
     position: relative;
     margin-top: 70px;
     width: 100%;
-    height: 445px;
-    padding: 20px 80px 0px 50px;
     display: flex;   
     flex-direction: row; 
     flex-wrap: wrap;
-    align-items: center top;
-    
-}
-
-.footer__menu{
-    color: rgb(41, 41, 41); 
-    
-    display: flex;   
-    flex-direction: column; 
-    flex-wrap: wrap;
-    width: 150px;
-    margin: 20px;
-    font-family: 'Suisse';
-   
-    font-size: 15px;
+    align-items: center top;    
 }
 
 .footer__shop {
     display: flex;   
     flex-direction: column; 
     flex-wrap: wrap;
-    width: 150px;
     margin: 20px;
-
     color: rgb(41, 41, 41);
     font-size: 10px;
     font-family:'Suisse';
 }
+
 .footer__shop a{
     color: rgb(71, 71, 71);
 }
+
 .footer__about {
     display: flex;   
     flex-direction: column; 
@@ -371,35 +421,32 @@ left: 42.5%;
     width: 190px;
     margin: 20px;
 
-    color: rgb(79,77,74);
+    color: rgb(41,41,41);
     font-size: 10px;
     font-family:'Suisse';
 }
-.footer__community {
-    display: flex;   
-    flex-direction: column; 
-    flex-wrap: wrap;
-    width: 150px;
-    margin: 20px;
-
-    color: rgb(79,77,04);
-    font-size: 10px;
-    font-family:'Suisse';
-}
-.footer__info {
-    display: flex;   
-    flex-direction: column; 
-    flex-wrap: wrap;
-    width: 150px;
-    margin: 20px;
-    color: rgb(79,77,74);
-    font-size: 10px;
-    font-family:'Suisse';
+.footer__social a{
+    color: rgb(71, 71, 71);
 }
 
-  /* Style the input elements and the submit button */
+.newsletter{
+    display: flex;
+    flex-direction: row;
+}
+
+.newsletter__container h2{
+    font-family: 'Suisse';
+    font-size: 1.2em;
+}
+
+.newsletter__container p{
+    font-family: 'SuisseBook';
+    font-size: 0.9em;
+    width: 30%;
+}
+
 input[type=text], input[type=submit] {
-    width: 60%;
+    width: 30%;
     padding: 12px;
     margin: 8px 0;
     display: inline-block;
@@ -407,12 +454,11 @@ input[type=text], input[type=submit] {
     box-sizing: border-box;
 }
 
-  /* Style the submit button */
 .newsletter__container a{ 
-    width: 40%;
+    width: 20%;
     height: 40px;
     font-family: "Suisse";
-    background-color: #04AA6D;
+    background-color: #ff5f37;
     color: white;
     border: none;
     font-size: 16px;
@@ -422,7 +468,7 @@ input[type=text], input[type=submit] {
     align-items: center;
     justify-content: center;
 }
-  
-input[type=submit]:hover {
-    opacity: 0.8;
+
+.newsletter__container a:hover{
+    background-color: #e40000;
 }
