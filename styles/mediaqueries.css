@@ -1,9 +1,11 @@
-/*Ipad Mini*/
-@media all and (max-width:1200px) {
+@media all and (max-width:1180px) {
 
     /*initial banner*/
+    .container{
+        width: 100%;
+    }
     .quote{
-        width: 60%;
+        max-width: 100%;
         height: 15%; 
         margin-left: 2%;
     }
@@ -19,31 +21,94 @@
     }
 
     .news{
-        height: 40%;
+        height: 200px;
     }
 
     .box_news{
         height: 450px;
     }
 
-    
-   
-}
+    .product {
+        padding: 20px;
+        list-style-type: none;
+    }
 
-@media all and (max-width:700px) {
-    .quote{
-        width: 60%;
-        height: 50%; 
+    .product p{
+        width: 80%;
+        margin-left: 25px;
+        font-size: 18px;
     }
-    .promo_text{
-        width: 30%;
-        margin: 20px 0;
-        font-size: 13px;
+
+    .product h4 {
+        margin-top: 15px;
+        margin-left: 25px;
+        font-size: 20px;
     }
-    .btn1{
-        width: 15%;
-        height: 58px;
-        margin-left: 80px;
+
+    .product a{
+        width: 50%;
+        height: 48px;
+        margin: 40px 0 0 70px;
+        font-size: 16px;
+    }
+
+    .products{
+        max-width: 100%;
+        margin:0 20px 25px 20px;
+    }
+
+    .article_promo_text {
+        margin: 50px;
+    }
+
+    .article_promo_text h2{
+        font-size: 50px;
+        letter-spacing: 4px;
+        width: 100%;
+        text-align: left;
+        justify-content: center;
+    }
+
+    .article_promo_text p{
+       font-size: 15px;
+       width: 100%;
+       margin-top: 10px;
+    }
+   
+    .article__caract {
+        width: 100%;
+    }
+
+    .banner__refer{
+        position: relative;
+        background-color: black;
+        padding: 50px;
+        display: flex;
+        
+    }
+
+    .refer__pic{
+        position: relative;
+        width: 40%;
+        height: 20%;
+        margin-top: 20px;
+        align-items: right;
+    }
+
+    .banner__refer__title{
+        font-size: 18px;
+    }
+    
+    .banner__refer__info h1{
+        font-size: 40px;
+    }
+    
+    .banner__refer__info p{
+        font-size: 15px;
+    }
+    .banner__refer__info a{
+        width: 40%;
+        height: 50px;
         font-size: 13px;
     }
 }
