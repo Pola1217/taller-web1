@@ -1,0 +1,49 @@
+/*Ipad Mini*/
+@media all and (max-width:1200px) {
+
+    /*initial banner*/
+    .quote{
+        width: 60%;
+        height: 15%; 
+        margin-left: 2%;
+    }
+    .promo_text{
+        font-size: 15px;
+        margin-left: 2.5%;
+    }
+    .btn1{
+        width: 16%;
+        height: 58px;
+        margin-left: 12%;
+        font-size: 13px;
+    }
+
+    .news{
+        height: 40%;
+    }
+
+    .box_news{
+        height: 450px;
+    }
+
+    
+   
+}
+
+@media all and (max-width:700px) {
+    .quote{
+        width: 60%;
+        height: 50%; 
+    }
+    .promo_text{
+        width: 30%;
+        margin: 20px 0;
+        font-size: 13px;
+    }
+    .btn1{
+        width: 15%;
+        height: 58px;
+        margin-left: 80px;
+        font-size: 13px;
+    }
+}

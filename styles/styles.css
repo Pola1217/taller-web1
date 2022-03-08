@@ -60,10 +60,10 @@ header{
 }
 
 .logo{
-position: absolute;
-width: 208px;
-height: 24px;
-left: 42.5%;
+    position: absolute;
+    width:  20%;
+    height: 45%;
+    left: 42.5%;
 }
 
 .menu__item {
@@ -83,15 +83,15 @@ left: 42.5%;
     border-radius: 20px;
 }
 
+/*INITIAL BANNER*/
 .container{
     background-image: linear-gradient(180.77deg, #FFFAE9 45.73%, #9EB3FE 85.72%, #7997FF 97.63%);
-    height: 788px;
     position: relative;
 }
 
 .landind__pic{
     width: 50%;
-    
+    height: 50%;
     position:relative;
     left: 50%;
 }
@@ -99,34 +99,34 @@ left: 42.5%;
 .landing__descrip {
    transform: translateY(-50%);
    position: absolute;
-   top: 50%;
+   top: 55%;
    left: 5%;
    flex-direction: column;
-    align-items: center;
+   align-items: left;
 }
 
 .quote{
-    width: 443px;
-    height: 190px;    
+    width: 60%;
+    height: 50%;    
 }
 
 .promo_text{
-    width: 475px;
+    position: relative;
+    width: 35%;
     margin: 20px 0;
     font-family: 'SuisseMono';
     color: blue;
     font-style: normal;
-    font-weight: 500;
     font-size: 18px;
-    line-height: 23px;
     display: flex;
     align-items: center;
     text-align: center;
 }
 
 .btn1{
-    width: 314px;
+    width: 20%;
     height: 88px;
+    margin-left: 80px;
     background: #FFFAE9;
     border: 2px solid #1DD000;
     box-sizing: border-box;
@@ -135,7 +135,9 @@ left: 42.5%;
     color: blue;
     font-size: 16px;
 }
+/*INITIAL BANNER*/
 
+/*NEWS SECTION*/
 .news__container{
     display:flex;
     align-items: center;
@@ -208,7 +210,9 @@ left: 42.5%;
     align-items: center;
     justify-content: center;
 }
+/*NEWS SECTION*/
 
+/*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
 .subtitles{
     font-family: 'Windsor';
     font-size: 55px;
@@ -230,8 +234,9 @@ left: 42.5%;
 
 .product p{
     padding: 0;
+    width: 50%;
     margin-left: 45px;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Suisse';
 }
 
@@ -262,7 +267,9 @@ left: 42.5%;
     max-width: 100%;
     margin:0 45px 25px 45px;
 }
+/*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
 
+/**/
 .article_promo {
     display: flex;
     flex-direction: row;
@@ -377,92 +384,93 @@ left: 42.5%;
     margin-top: 30px;
 }
 
+.footer__logo{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    margin: 20px;
+}
+
 .footer{
     position: relative;
-    margin-top: 70px;
+    /*margin-top: 20px;*/
+   
     width: 100%;
     display: flex;   
     flex-direction: row; 
-    flex-wrap: wrap;
-    align-items: center top;    
 }
 
-.footer__shop {
+.footer__menus {
     display: flex;   
+    flex-direction: row; 
+    justify-content: left;
+    width: 100%;
+    font-size: 0.7em;
+}
+
+.footer__menu {
     flex-direction: column; 
-    flex-wrap: wrap;
-    margin: 20px;
     color: rgb(41, 41, 41);
-    font-size: 10px;
     font-family:'Suisse';
+    padding-right: 50px;
 }
 
-.footer__shop a{
+.footer__menu li {
+    width: 60%;
+    padding: 3px;
+}
+
+.footer__menu a{
     color: rgb(71, 71, 71);
 }
 
-.footer__about {
-    display: flex;   
-    flex-direction: column; 
-    flex-wrap: wrap;
-    width: 150px;
-    margin: 20px;
-    color: rgb(41, 41, 41);
-    font-size: 10px;
-    font-family:'Suisse';
-}
-.footer__about a{
-    color: rgb(71, 71, 71);
-}
-.footer__social{
-    display: flex;   
-    flex-direction: column; 
-    flex-wrap: wrap;
-    width: 190px;
-    margin: 20px;
-
-    color: rgb(41,41,41);
-    font-size: 10px;
-    font-family:'Suisse';
-}
-.footer__social a{
-    color: rgb(71, 71, 71);
-}
-
-.newsletter{
+.newsletter__container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-left: 150px;
 }
 
 .newsletter__container h2{
     font-family: 'Suisse';
     font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .newsletter__container p{
+    width: 90%;
     font-family: 'SuisseBook';
-    font-size: 0.9em;
-    width: 30%;
+    font-size: 0.7em;
+    margin-bottom: 10px;
+}
+
+.newsletter__input {
+    display: flex;   
+    flex-direction: row; 
+    flex-wrap: wrap;
+    
 }
 
 input[type=text], input[type=submit] {
-    width: 30%;
-    padding: 12px;
-    margin: 8px 0;
+    width: 50%;
+    height: 30px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(0, 0, 0);
     box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 2px;
 }
 
 .newsletter__container a{ 
     width: 20%;
-    height: 40px;
+    height: 30px;
+    margin-left: 20px;
     font-family: "Suisse";
     background-color: #ff5f37;
     color: white;
+    border-radius: 2px;
     border: none;
     font-size: 16px;
-    border: none;
     text-align: center;
     display: flex;
     align-items: center;
