@@ -44,6 +44,7 @@
         font-size: 0.8125em;
     }
 
+    /*NEWS AND ARTICLES*/
     .news{
         height: 150px;
     }
@@ -65,6 +66,7 @@
         height: 40px;
     }
 
+    /*PRODUCTS / SHOP*/
     .product {
         padding: 10px;
         list-style-type: none;
@@ -94,6 +96,7 @@
         margin: 20px 30px 25px 20px;
     }
 
+    /*PROMO BANNER*/
     .article_promo_text {
         margin: 30px;
     }
@@ -114,6 +117,7 @@
         width: 100%;
     }
 
+    /*REFER A FRIEND*/
     .banner__refer{
         margin-top: 50px;
     }
@@ -144,6 +148,7 @@
         font-size: 0.625em;
     }
 
+    /*FOOTER*/
     .footer{
         display: block;
     }
@@ -171,6 +176,7 @@
         color: rgb(71, 71, 71);
     }
 
+    /*JOIN NEWSLETTER*/
     .newsletter__container{
         justify-content: left;
         margin-left: 20px;
@@ -199,6 +205,7 @@
         display: none;
     }
 
+    /*LANDING*/
     .container{
         background-image: #ffffff;
         width: 100%;
@@ -227,6 +234,7 @@
         margin-top: 250px;
     }
 
+    /*NEWS / ARTICLES*/
     .news{
        display:none;
     }
@@ -235,6 +243,7 @@
         display:none;
     }
 
+    /*SUNTITLES AND DESCRIPTIONS*/
     .subtitles{
         margin-left: 40px;
         font-size: 2.1875em;
@@ -247,6 +256,7 @@
         font-size: 0.9375em;
     }
 
+    /*PRODUCTS / SHOP*/
     .product {
         max-width: 100%;
         padding: 20px;
@@ -283,6 +293,7 @@
         justify-content: center;
     }
 
+    /*BANNER MISSION*/
     .banner_mision{
         display: none;
     }
@@ -292,6 +303,7 @@
         width: 100%;
     }
 
+    /*PROMOTION ARTICLE*/
     .article_promo {
         display: block;
         margin: 10px;
@@ -342,6 +354,7 @@
         margin-left: 20px;
     }
 
+    /*REFER A FRIEND*/
     .banner__refer{
         margin-top: 120px;
     }
@@ -373,6 +386,7 @@
         font-size: 0.625em;
     }
 
+    /*FOOTER*/
     .footer{
         display: block;
     }
@@ -407,6 +421,7 @@
         color: rgb(71, 71, 71);
     }
 
+    /*JOIN NEWSLETTER*/
     .newsletter__container{
         justify-content: left;
         margin-left: 20px;
@@ -456,6 +471,5 @@
         background-color: #e40000;
     }
     
-
 }
 

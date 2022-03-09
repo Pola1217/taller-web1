@@ -278,7 +278,7 @@ header{
 /*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
 
 
-/**/
+/*BANNER MISSION*/
 
 .banner_mision{
     width: 100%;
@@ -288,6 +288,8 @@ header{
     display: none;
 }
 
+
+/*PROMOTIONAL BANNER*/
 .article_promo {
     display: flex;
     flex-direction: row;
@@ -345,6 +347,7 @@ header{
     border: 5px #000000;
 }
  
+/*REFER A FRIEND*/
 .banner{
     position: relative;
     width: 100%;
@@ -411,6 +414,7 @@ header{
     margin-top: 30px;
 }
 
+/*FOOTER*/
 .footer__logo{
     position: relative;
     width: 20%;
@@ -463,6 +467,7 @@ header{
     color: rgb(71, 71, 71);
 }
 
+/*JOIN NEWSLETTER*/
 .newsletter__container{
     display: flex;
     flex-direction: column;
