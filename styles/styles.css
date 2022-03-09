@@ -140,6 +140,11 @@ header{
     color: blue;
     font-size: 1em;
 }
+
+.promo_button:hover{
+    background-color: blue;
+    color:  #FFFAE9;
+}
 /*INITIAL BANNER*/
 
 /*NEWS SECTION*/
@@ -215,6 +220,10 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.box_news a:hover{
+    background-color: #bbbbbb;
 }
 /*NEWS SECTION*/
 
@@ -412,6 +421,10 @@ header{
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+}
+
+.banner__refer__info a:hover{
+    background-color: #b3ff4f;
 }
 
 /*FOOTER*/
