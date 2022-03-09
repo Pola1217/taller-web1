@@ -267,6 +267,10 @@ header{
     justify-content: center;
 }
 
+.product a:hover{
+    background-color: #e40000;
+}
+
 .products{
     max-width: 100%;
     margin:0 45px 25px 45px;
