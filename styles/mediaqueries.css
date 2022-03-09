@@ -1,5 +1,5 @@
 /*Tablet*/
-@media all and (max-width:1180px) {
+@media all and (max-width:1024px) {
 
     .logo{
         position: absolute;
