@@ -372,14 +372,15 @@
         display: block;
     }
 
-    .footer__menus {
-        display: block;
+    .footer__menus { 
+        
+        display: block; 
     }
 
     .footer__menu {
         padding: 0 5px 20px 5px;
     }
-    
+
     .footer_menu_title{
         font-size: 0.7em;
         padding: 0 5px 20px 20px;
