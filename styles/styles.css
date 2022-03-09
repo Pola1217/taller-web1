@@ -63,7 +63,7 @@ header{
     position: absolute;
     width:  20%;
     height: 45%;
-    left: 42.5%;
+    left: 40.5%;
 }
 
 .menu__item {
@@ -274,6 +274,10 @@ header{
 
 .banner_mision{
     width: 100%;
+}
+
+.banner_mobile{
+    display: none;
 }
 
 .article_promo {
