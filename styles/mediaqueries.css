@@ -9,7 +9,7 @@
     }
 
     .menu__item {
-        font-size: 7px;
+        font-size: 0.4375em;
         padding: 5px 5px;
     }
 
@@ -29,14 +29,14 @@
         margin-left: 6%;
     }
     .promo_text{
-        font-size: 10px;
+        font-size: 0.625em;
         margin-left: 3%;
     }
     .btn1{
         width: 15%;
         height: 48px;
         margin-left: 13%;
-        font-size: 13px;
+        font-size: 0.8125em;
     }
 
     .news{
@@ -49,13 +49,13 @@
     }
 
     .box_news p{
-        font-size: 14px;
+        font-size: 0.875em;
     }
 
     .box_news a{
 
         color: rgb(0, 0, 0);
-        font-size: 12px;
+        font-size: 0.75em;
         width: 100%;
         height: 40px;
     }
@@ -68,20 +68,20 @@
     .product p{
         width: 80%;
         margin-left: 25px;
-        font-size: 12px;
+        font-size: 0.75em;
     }
 
     .product h4 {
         margin-top: 15px;
         margin-left: 25px;
-        font-size: 18px;
+        font-size: 1.125em;
     }
 
     .product a{
         width: 50%;
         height: 48px;
         margin: 20px 0 30px 40px;
-        font-size: 10px;
+        font-size: 0.625em;
     }
 
     .products{
@@ -94,13 +94,13 @@
     }
 
     .article_promo_text h2{
-        font-size: 40px;
+        font-size: 2.5em;
         letter-spacing: 4px;
         width: 100%;
     }
 
     .article_promo_text p{
-       font-size: 10px;
+       font-size: 0.625em;
        width: 100%;
        margin-top: 0px;
     }
@@ -122,21 +122,21 @@
     }
 
     .banner__refer__title{
-        font-size: 18px;
+        font-size: 1.125em;
     }
     
     .banner__refer__info h1{
-        font-size: 30px;
+        font-size: 1.875em;
     }
     
     .banner__refer__info p{
-        font-size: 10px;
+        font-size: 0.625em;
         width: 100%;
     }
     .banner__refer__info a{
         width: 60%;
         height: 40px;
-        font-size: 10px;
+        font-size: 0.625em;
     }
 
     .footer{
@@ -216,7 +216,7 @@
 
     .btn1{
         width: 60%;
-        font-size: 12px;
+        font-size: 0.75em;
         padding: 5px;
         margin-left: 120px;
         margin-top: 250px;
@@ -232,14 +232,14 @@
 
     .subtitles{
         margin-left: 40px;
-        font-size: 35px;
+        font-size: 2.1875em;
 
     }
     
     .t__description{
         width: 80%;
         margin-left: 40px;
-        font-size: 15px;
+        font-size: 0.9375em;
     }
 
     .product {
@@ -254,20 +254,20 @@
     .product p{
         width: 80%;
         margin-left: 25px;
-        font-size: 16px;
+        font-size: 1em;
     }
 
     .product h4 {
         margin-top: 15px;
         margin-left: 25px;
-        font-size: 18px;
+        font-size: 1.125em;
     }
 
     .product a{
         width: 50%;
         height: 48px;
         margin: 20px 0 30px 40px;
-        font-size: 10px;
+        font-size: 0.625em;
     }
 
     .products{
@@ -297,7 +297,7 @@
     }
 
     .article_promo_text h2{
-        font-size: 30px;
+        font-size: 1.875em;
         letter-spacing: 4px;
         width: 100%;
     }
@@ -311,7 +311,7 @@
 
     .caract_item p{
         padding: 0px;
-        font-size: 18px;
+        font-size: 1.125em;
         width: 100%;
         height: 30px;
         margin-top: 0px;
@@ -319,13 +319,13 @@
     }
 
     .article_promo_text h2{
-        font-size: 30px;
+        font-size: 1.875em;
         letter-spacing: 4px;
         width: 100%;
      }
 
     .article_promo_text p{
-       font-size: 10px;
+       font-size: 0.625em;
        width: 100%;
        margin-top: 5px;
        margin-bottom: 20px;
@@ -350,22 +350,22 @@
     }
 
     .banner__refer__title{
-        font-size: 15px;
+        font-size: 0.9375em;
         text-align: center;
     }
     
     .banner__refer__info h1{
-        font-size: 20px;
+        font-size: 1.25em;
     }
     
     .banner__refer__info p{
-        font-size: 10px;
+        font-size: 0.625em;
         width: 100%;
     }
     .banner__refer__info a{
         width: 60%;
         height: 40px;
-        font-size: 10px;
+        font-size: 0.625em;
     }
 
     .footer{
@@ -440,7 +440,7 @@
         color: white;
         border-radius: 2px;
         border: none;
-        font-size: 12px;
+        font-size: 0.75em;
         text-align: center;
         display: flex;
         align-items: center;

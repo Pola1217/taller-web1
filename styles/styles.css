@@ -68,7 +68,7 @@ header{
 
 .menu__item {
     font-family: 'Suisse' ;
-    font-size: 12px;
+    font-size: 0.75em;
     margin: 0 5px;
     padding: 5px 5px;
     position: relative;
@@ -118,7 +118,7 @@ header{
     font-family: 'SuisseMono';
     color: blue;
     font-style: normal;
-    font-size: 18px;
+    font-size: 1.125em;
     display: flex;
     align-items: center;
     text-align: center;
@@ -134,7 +134,7 @@ header{
     text-align: center;
     font-family: 'SuisseMono';
     color: blue;
-    font-size: 16px;
+    font-size: 1em;
 }
 /*INITIAL BANNER*/
 
@@ -184,7 +184,7 @@ header{
 
 .box_news h2{
     font-family: 'SuisseMono';
-    font-size: 20px;
+    font-size: 1.25em;
     color: white;
     padding: 5px 10px;
     background-color: black;
@@ -193,7 +193,7 @@ header{
 
 .box_news p{
     font-family: 'Suisse';
-    font-size: 18px;
+    font-size: 1.125em;
     text-align:left;
     margin: 10px 0px 10px 0;
 }
@@ -204,7 +204,7 @@ header{
     text-align: center;
     font-family: 'SuisseMono';
     color: rgb(0, 0, 0);
-    font-size: 16px;
+    font-size: 1em;
     width: 100%;
     height: 60px;
     border-radius: 11px;
@@ -217,7 +217,7 @@ header{
 /*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
 .subtitles{
     font-family: 'Windsor';
-    font-size: 55px;
+    font-size: 3.4375em;
     margin-left: 60px;
     margin-bottom: 20px;
 }
@@ -237,7 +237,7 @@ header{
 .product p{
     width: 80%;
     margin-left: 45px;
-    font-size: 16px;
+    font-size: 1em;
     font-family: 'Suisse';
 }
 
@@ -245,7 +245,7 @@ header{
     margin-top: 15px;
     margin-left: 45px;
     font-family: 'SuisseMono';
-    font-size: 20px;
+    font-size: 1.25em;
 }
 
 .product a{
@@ -254,7 +254,7 @@ header{
     margin: 50px 0 0 55px;
     font-family: 'SuisseMono';
     color: rgb(255, 255, 255);
-    font-size: 16px;
+    font-size: 1em;
     background-color:#ff5f37;
     border: none;
     text-align: center;
@@ -294,7 +294,7 @@ header{
 
 .article_promo_text h2{
     font-family: 'Suisse';
-    font-size: 60px;
+    font-size: 3.75em;
     letter-spacing: 4px;
     width: 100%;
     text-align: left;
@@ -321,7 +321,7 @@ header{
     border: 3px solid #000000;
     text-align: center;
     color: rgb(0, 0, 0);
-    font-size: 18px;
+    font-size: 1.125em;
     width: 100%;
     height: 60px;
     border-radius: 51px;
@@ -367,7 +367,7 @@ header{
 .banner__refer__title{
     font-family: 'SuisseMono';
     color: black;
-    font-size: 25px;
+    font-size: 1.5625em;
     width: fit-content;
     background-color: rgb(190, 255, 70);
     box-sizing: border-box;
@@ -377,7 +377,7 @@ header{
     font-family: 'Windsor';
     color: white;
     margin-top: 20px;
-    font-size: 50px;
+    font-size: 3.125em;
 }
 
 .banner__refer__info p{
@@ -385,7 +385,7 @@ header{
     color: white;
     margin-top: 20px;
     width: 60%;
-    font-size: 20px;
+    font-size: 1.25em;
 }
 .banner__refer__info a{
     width: 30%;
@@ -396,7 +396,7 @@ header{
     box-sizing: border-box;
     text-align: center;
     font-family: 'SuisseMono';
-    font-size: 16px;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -501,7 +501,7 @@ input[type=text], input[type=submit] {
     color: white;
     border-radius: 2px;
     border: none;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center;
     display: flex;
     align-items: center;
