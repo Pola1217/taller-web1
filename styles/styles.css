@@ -66,6 +66,10 @@ header{
     left: 40.5%;
 }
 
+.menu_icon{
+    display: none;
+}
+
 .menu__item {
     font-family: 'Suisse' ;
     font-size: 0.75em;
@@ -124,7 +128,7 @@ header{
     text-align: center;
 }
 
-.btn1{
+.promo_button{
     width: 20%;
     height: 88px;
     margin-left: 80px;

@@ -1,11 +1,16 @@
 /*Ipad Pro*/
 @media all and (max-width:1180px) {
 
+    /*header*/
     .logo{
         position: absolute;
         width:  20%;
         height: 30%;
         left: 42.5%;
+    }
+    
+    .menu_icon{
+        display: none;
     }
 
     .menu__item {
@@ -32,7 +37,7 @@
         font-size: 0.625em;
         margin-left: 3%;
     }
-    .btn1{
+    .promo_button{
         width: 15%;
         height: 48px;
         margin-left: 13%;
@@ -214,7 +219,7 @@
         display: none;
     }
 
-    .btn1{
+    .promo_button{
         width: 60%;
         font-size: 0.75em;
         padding: 5px;
