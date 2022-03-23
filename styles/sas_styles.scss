@@ -1,0 +1,120 @@
+$mainfont: 'Suisse';
+$font: 'SuisseMono';
+
+@font-face {
+    font-family: Suisse;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseMono;
+    src: url('../fonts/SuisseMono.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseBook;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: Windsor;
+    src: url('../fonts/Windsor-Bold.ttf');
+
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin titles {
+    font-family: 'Windsor';
+    font-size: 3.4375em;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+@mixin description {
+    font-family: 'SuisseMono';
+    margin-left: 60px;
+    margin-bottom: 5px;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.align_items_center{
+    align-items: center;    
+}
+
+header{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    height: 70px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+
+    nav{
+        justify-content: space-between;
+
+        .logo{
+            position: absolute;
+            width:  20%;
+            height: 45%;
+            left: 40.5%;
+        }
+
+        .menu_icon{
+            display: none;
+        }
+
+        .menu{
+            &__item{
+                font-family: $mainfont;
+                font-size: 0.75em;
+                margin: 0 5px;
+                padding: 5px 5px;
+                position: relative;
+
+                a{
+                    color:rgb(0, 0, 0);
+                }
+
+                &:hover{
+                    background-color: rgb(160, 196, 172);
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
+
+.container{
+    background-image: linear-gradient(180.77deg, #FFFAE9 45.73%, #9EB3FE 85.72%, #7997FF 97.63%);
+    position: relative;
+    width: 100%;
+}
+
+.subtitles{
+    @include titles();
+}
+
+.t__description{
+    @include description();
+}

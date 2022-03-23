@@ -519,7 +519,7 @@ input[type=text], input[type=submit] {
 }
 
 .newsletter__container a{ 
-    width: 20%;
+    width: 30%;
     height: 30px;
     margin-left: 20px;
     font-family: "Suisse";
