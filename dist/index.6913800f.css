@@ -1,0 +1,92 @@
+@font-face {
+  font-family: Suisse;
+  src: url("SuisseBook.fef507d7.ttf");
+}
+
+@font-face {
+  font-family: SuisseMono;
+  src: url("SuisseMono.d6a4e170.ttf");
+}
+
+@font-face {
+  font-family: SuisseBook;
+  src: url("SuisseBook.fef507d7.ttf");
+}
+
+@font-face {
+  font-family: Windsor;
+  src: url("Windsor-Bold.cada40e6.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.align_items_center {
+  align-items: center;
+}
+
+header {
+  height: 70px;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+}
+
+header nav {
+  justify-content: space-between;
+}
+
+header nav .logo {
+  width: 20%;
+  height: 45%;
+  position: absolute;
+  left: 40.5%;
+}
+
+header nav .menu_icon {
+  display: none;
+}
+
+header nav .menu__item {
+  margin: 0 5px;
+  padding: 5px;
+  font-family: Suisse;
+  font-size: .75em;
+  position: relative;
+}
+
+header nav .menu__item a {
+  color: #000;
+}
+
+header nav .menu__item:hover {
+  background-color: #a0c4ac;
+  border-radius: 20px;
+}
+
+.container {
+  width: 100%;
+  background-image: linear-gradient(180.77deg, #fffae9 45.73%, #9eb3fe 85.72%, #7997ff 97.63%);
+  position: relative;
+}
+
+/*# sourceMappingURL=index.6913800f.css.map */

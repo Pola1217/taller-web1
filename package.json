@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "firebase": "^9.6.11"
+  },
+  "name": "shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel ./*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pola1217/taller-web1.git"
+  },
+  "author": "Maria Jose Polanco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pola1217/taller-web1/issues"
+  },
+  "homepage": "https://github.com/Pola1217/taller-web1#readme",
+  "description": "",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.1",
+    "parcel": "^2.4.1",
+    "process": "^0.11.10"
+  }
+}

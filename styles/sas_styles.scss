@@ -118,3 +118,461 @@ header{
 .t__description{
     @include description();
 }
+
+/*INITIAL BANNER*/
+.container{
+    background-image: linear-gradient(180.77deg, #FFFAE9 45.73%, #9EB3FE 85.72%, #7997FF 97.63%);
+    position: relative;
+    width: 100%;
+}
+
+.landind__pic{
+    width: 50%;
+    height: 50%;
+    position:relative;
+    left: 50%;
+}
+
+.landing__descrip {
+   transform: translateY(-50%);
+   position: absolute;
+   top: 55%;
+   left: 5%;
+   flex-direction: column;
+   align-items: left;
+}
+
+.quote{
+    width: 60%;
+    height: 50%;    
+}
+
+.promo_text{
+    position: relative;
+    width: 35%;
+    margin: 20px 0;
+    font-family: 'SuisseMono';
+    color: blue;
+    font-style: normal;
+    font-size: 1.125em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.promo_button{
+    width: 20%;
+    height: 88px;
+    margin-left: 80px;
+    background: #FFFAE9;
+    border: 2px solid #1DD000;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: blue;
+    font-size: 1em;
+}
+
+.promo_button:hover{
+    background-color: blue;
+    color:  #FFFAE9;
+}
+/*INITIAL BANNER*/
+
+/*NEWS SECTION*/
+.news__container{
+    display:flex;
+    align-items: center;
+    flex-direction:row;
+    padding: 50px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.info {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.info li {
+    width: 30%;
+}
+
+.news{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom: 3px solid #000000;
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    
+}
+
+.box_news{
+    width: 90%;
+    height: 500px;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px; 
+}
+
+.box_news div{
+    text-align:left;
+    padding: 8px;
+    margin: 5px 20px;
+
+}
+
+.box_news h2{
+    font-family: 'SuisseMono';
+    font-size: 1.25em;
+    color: white;
+    padding: 5px 10px;
+    background-color: black;
+    width: fit-content;
+}
+
+.box_news p{
+    font-family: 'Suisse';
+    font-size: 1.125em;
+    text-align:left;
+    margin: 10px 0px 10px 0;
+}
+
+.box_news a{
+    margin: 40px 0px 10px 0;
+    border: 3px solid #000000;
+    text-align: center;
+    font-family: 'SuisseMono';
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+    width: 100%;
+    height: 60px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box_news a:hover{
+    background-color: #bbbbbb;
+}
+/*NEWS SECTION*/
+
+/*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
+.subtitles{
+    font-family: 'Windsor';
+    font-size: 3.4375em;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+.t__description{
+    font-family: 'SuisseMono';
+    margin-left: 60px;
+    margin-bottom: 5px;
+}
+
+.product{
+    max-width: 100%;
+    padding: 45px;
+    list-style-type: none;
+}
+
+.product p{
+    width: 80%;
+    margin-left: 45px;
+    font-size: 1em;
+    font-family: 'Suisse';
+}
+
+.product h4{
+    margin-top: 15px;
+    margin-left: 45px;
+    font-family: 'SuisseMono';
+    font-size: 1.25em;
+}
+
+.product a{
+    width: 60%;
+    height: 68px;
+    margin: 50px 0 0 55px;
+    font-family: 'SuisseMono';
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    background-color:#ff5f37;
+    border: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product a:hover{
+    background-color: #e40000;
+}
+
+.products{
+    max-width: 100%;
+    margin:0 45px 25px 45px;
+}
+/*SKINCARE FOR ALL / AWARD WINNIG SECTION*/
+
+
+/*BANNER MISSION*/
+
+.banner_mision{
+    width: 100%;
+}
+
+.banner_mobile{
+    display: none;
+}
+
+
+/*PROMOTIONAL BANNER*/
+.article_promo {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+}
+
+.article_promo_text {
+    display: flex;
+    flex-direction: column;
+    margin: 70px;
+}
+
+.article_promo_text h2{
+    font-family: 'Suisse';
+    font-size: 3.75em;
+    letter-spacing: 4px;
+    width: 100%;
+    text-align: left;
+    justify-content: center;
+}
+
+.article_promo_text p{
+    font-family: 'SuisseMono';
+    width: 80%;
+    height: 20px;
+    margin-top: 30px;
+}
+
+.article__caract {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.caract_item p{
+    font-family: 'SuisseMono';
+    padding: 10px;
+    border: 3px solid #000000;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 1.125em;
+    width: 100%;
+    height: 60px;
+    border-radius: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.img_article {
+    width: 40%;
+    border: 5px #000000;
+}
+ 
+/*REFER A FRIEND*/
+.banner{
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.banner__refer{
+    position: relative;
+    background-color: black;
+    padding: 50px;
+    display: flex;
+    
+}
+
+.refer__pic{
+    position: relative;
+    width: 50%;
+    align-items: right;
+    margin-right: 60px;
+}
+
+.banner__refer__info{
+    text-align:left;
+    padding: 8px;
+    margin: 15px 20px;
+}
+
+.banner__refer__title{
+    font-family: 'SuisseMono';
+    color: black;
+    font-size: 1.5625em;
+    width: fit-content;
+    background-color: rgb(190, 255, 70);
+    box-sizing: border-box;
+}
+
+.banner__refer__info h1{
+    font-family: 'Windsor';
+    color: white;
+    margin-top: 20px;
+    font-size: 3.125em;
+}
+
+.banner__refer__info p{
+    font-family: 'SuisseMono';
+    color: white;
+    margin-top: 20px;
+    width: 60%;
+    font-size: 1.25em;
+}
+.banner__refer__info a{
+    width: 30%;
+    height: 50px;
+    color: black;
+    background: white;
+    border: none;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'SuisseMono';
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.banner__refer__info a:hover{
+    background-color: #b3ff4f;
+}
+
+/*FOOTER*/
+.footer__logo{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    margin: 20px;
+}
+
+.footer{
+    position: relative;
+    width: 100%;
+    display: flex;   
+    flex-direction: row; 
+}
+
+.footer__menus {
+    display: flex;   
+    flex-direction: row; 
+    justify-content: left;
+    width: 100%;
+    font-size: 0.7em;
+}
+
+.footer__menu {
+    color: rgb(41, 41, 41);
+    font-family:'Suisse';
+    padding: 0 20px 30px 20px;
+}
+
+.footer_menu_title{
+    color: rgb(41, 41, 41);
+    font-family:'Suisse';
+    padding: 0 20px 30px 50px;
+}
+
+.footer__menu div{
+    flex-direction: column; 
+    color: rgb(41, 41, 41);
+    font-family:'Suisse';
+    padding: 0 20px 30px 20px;
+    column-count: 2;
+    column-gap: 14px;
+}
+
+.footer__menu li {
+    width: 60%;
+    padding: 3px;
+}
+
+.footer__menu a{
+    color: rgb(71, 71, 71);
+}
+
+/*JOIN NEWSLETTER*/
+.newsletter__container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+}
+
+.newsletter__container h2{
+    font-family: 'Suisse';
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.newsletter__container p{
+    width: 90%;
+    font-family: 'SuisseBook';
+    font-size: 0.7em;
+    margin-bottom: 10px;
+}
+
+.newsletter__input {
+    display: flex;   
+    flex-direction: row; 
+    flex-wrap: wrap;
+    
+}
+
+input[type=text], input[type=submit] {
+    width: 50%;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid rgb(0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.newsletter__container a{ 
+    width: 30%;
+    height: 30px;
+    margin-left: 20px;
+    font-family: "Suisse";
+    background-color: #ff5f37;
+    color: white;
+    border-radius: 2px;
+    border: none;
+    font-size: 1em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter__container a:hover{
+    background-color: #e40000;
+}
+
+.copyright{
+    font-family: "Suisse";
+    font-size: 0.7em;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}

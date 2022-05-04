@@ -1,0 +1,100 @@
+@font-face {
+    font-family: Suisse;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseMono;
+    src: url('../fonts/SuisseMono.ttf');
+
+}
+
+@font-face {
+    font-family: SuisseBook;
+    src: url('../fonts/SuisseBook.ttf');
+
+}
+
+@font-face {
+    font-family: Windsor;
+    src: url('../fonts/Windsor-Bold.ttf');
+
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*ACTUAL PAGE*/
+.title {
+    position: relative;
+    align-items: center;
+    font-family: SuisseBook;
+    font-style: normal;
+    font-size: 40px;
+    color: #000000;
+}
+
+#signupForm {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    top: 157px;
+}
+
+.signupInput {
+    font-family:  SuisseBook;
+    font-size: 0.95em;
+    line-height: 21px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    width: 50%;
+    height: 20%;
+    margin-top: 25px;
+    margin-bottom: 17px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.se
+
+.signInBtn {
+ 
+    font-family: SuisseBook;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.95em;
+    text-align: center;
+    color: #000000;
+    
+    width: 20%;
+    height: 15%;
+    padding: 0.8%;
+    margin-top: 25px;
+    
+    border: 2px solid #000000;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+
+}
+
+.logIn {
+    font-family: SuisseBook;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75em;
+    line-height: 21px;
+    color: #8f8f8f;
+    justify-content: center;
+    margin-top: 5px;
+}
+

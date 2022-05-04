@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./styles/createProducts.css">
+</head>
+<body>
+            <form id="add_product_from">
+            
+            <h1 id="title">Agrega un nuevo producto</h1>
+
+            <input class="addInput" id="name" type="text" placeholder="Nombre"/>
+            <textarea class="addInput" id="description" type="text" placeholder="Descripción"/></textarea>
+            <input class="addInput" id="stock" type="number" placeholder="Stock (unidades)"/>
+            <select class="categories" name="category">
+                <option value="none">None</option>
+                <option value="kits">Kits</option>
+                <option value="cleanse">Clenasers</option>
+                <option value="care">Care</option>
+            </select>
+            <input class="addInput" id="price" type="number" placeholder="Precio"/>
+            <input class="addInput" type="file" name="images" multiple accept=".png, .jpg, .jpeg">
+            <input class="addBtn" type="submit" value="Agregar">
+            
+        </form>
+
+        <script src="./src/createProducts.js" type="module"></script>
+</body>
+        
+</html>
