@@ -24,71 +24,22 @@
   padding: 0;
 }
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-.flex {
-  display: flex;
-}
-
 .align_items_center {
   align-items: center;
 }
 
-header {
-  height: 70px;
-  width: 100%;
-  z-index: 1;
-  background-color: #fff;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  position: fixed;
-}
-
-.nav {
-  justify-content: space-between;
-}
-
-.logo {
-  width: 20%;
-  height: 45%;
-  position: absolute;
-  left: 40.5%;
-}
-
-.menu_icon {
-  display: none;
-}
-
-.menu__item {
-  margin: 0 5px;
-  padding: 5px;
-  font-family: Suisse;
-  font-size: .75em;
-  position: relative;
-}
-
-.menu__item a {
-  color: #000;
-}
-
-.menu__item:hover {
-  background-color: #a0c4ac;
-  border-radius: 20px;
-}
-
-.titles {
+.title {
   color: #000;
   margin-left: 30px;
   font-family: Windsor;
-  font-size: 3.4375em;
+  font-size: 2.3em;
   position: relative;
+  top: 90px;
+}
+
+.filters {
+  max-width: 100%;
+  margin-left: 2%;
 }
 
 #category, #order {
@@ -98,11 +49,10 @@ header {
   background: #fff;
   border: 1px solid #000;
   border-radius: 5px;
-  margin-top: 25px;
-  margin-bottom: 17px;
+  margin: 8% 2% 1% 0;
   padding: 5px;
   font-family: SuisseBook;
-  font-size: .95em;
+  font-size: .75em;
   line-height: 21px;
 }
 
@@ -116,94 +66,51 @@ header {
   display: grid;
 }
 
-.product p {
-  width: 80%;
-  margin-left: 45px;
-  font-family: Suisse;
-  font-size: 1em;
+.product {
+  margin-bottom: 25%;
 }
 
-.product h4 {
+.product__image {
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+}
+
+.product__name {
+  color: #000;
   margin-top: 15px;
   margin-left: 45px;
-  font-family: SuisseMono;
+  font-family: SuisseBook;
   font-size: 1.25em;
 }
 
-.product a {
-  width: 20%;
-  color: #fff;
-  background-color: #ff5f37;
-  border: none;
-  justify-content: center;
-  margin: 50px 0 50px 55px;
-  padding: 15px;
-  font-family: SuisseMono;
-  font-size: 1em;
-  display: flex;
-}
-
-.product a:hover {
-  background-color: #e40000;
-}
-
-.products {
-  max-width: 100%;
-  max-height: 60%;
-  margin: 0 45px 25px;
-}
-
-.products_preview {
-  height: 100%;
-  width: 100%;
-  background: #2e2e2ecc;
-  justify-content: center;
-  align-items: center;
+.product__category {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
-.product_preview .preview {
-  text-align: center;
-  background: #fff;
-  padding: 20px;
-  display: none;
-  position: relative;
-}
-
-.product_preview .preview.active {
-  display: inline-block;
-}
-
-.product_preview .preview img {
-  height: 50%;
-}
-
-.product_preview .preview p {
-  width: 80%;
+.product__price {
+  color: #000;
+  margin-top: 15px;
   margin-left: 45px;
-  font-family: Suisse;
-  font-size: 1em;
-}
-
-.product_preview .preview h4 {
-  font-family: SuisseMono;
+  font-family: SuisseBook;
   font-size: 1.25em;
 }
 
-.product_preview .preview a {
+.product__cart {
+  width: 40%;
+  height: 20%;
   color: #fff;
-  width: 60%;
   background-color: #ff5f37;
   border: none;
-  justify-content: center;
   margin: 20px 0 0 55px;
-  padding: 15px;
-  font-family: Suisse;
-  font-size: 1em;
+  padding: 10px;
+  font-family: SuisseMono;
+  font-size: .85em;
   display: flex;
+}
+
+.product__cart:hover {
+  background-color: #e40000;
 }
 
 /*# sourceMappingURL=skincare.2f0a2b92.css.map */

@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"6IXwR":[function(require,module,exports) {
+})({"jKwHT":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -223,7 +223,7 @@ function _arrayLikeToArray(arr, len) {
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
     return arr2;
 }
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -250,11 +250,18 @@ interface ParcelModule {
     _disposeCallbacks: Array<(mixed) => void>,
   |};
 }
+interface ExtensionContext {
+  runtime: {|
+    reload(): void,
+  |};
+}
 declare var module: {bundle: ParcelRequire, ...};
 declare var HMR_HOST: string;
 declare var HMR_PORT: string;
 declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
+declare var chrome: ExtensionContext;
+declare var browser: ExtensionContext;
 */ var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
 function Module(moduleName) {
@@ -309,7 +316,12 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var id = assetsToAccept[i][1];
                     if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
                 }
-            } else window.location.reload();
+            } else if ('reload' in location) location.reload();
+            else {
+                // Web extension context
+                var ext = typeof chrome === 'undefined' ? typeof browser === 'undefined' ? null : browser : chrome;
+                if (ext && ext.runtime && ext.runtime.reload) ext.runtime.reload();
+            }
         }
         if (data.type === 'error') {
             // Log parcel errors to console
@@ -403,7 +415,7 @@ function reloadCSS() {
             var href = links[i].getAttribute('href');
             var hostname = getHostname();
             var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(location.origin) !== 0 && !servedFromHMRServer;
             if (!absolute) updateLink(links[i]);
         }
         cssTimeout = null;
@@ -617,7 +629,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _app = require("@firebase/app");
 parcelHelpers.exportAll(_app, exports);
 var name = "firebase";
-var version = "9.6.11";
+var version = "9.7.0";
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -723,7 +735,7 @@ var _util = require("@firebase/util");
     return (component === null || component === void 0 ? void 0 : component.type) === "VERSION" /* VERSION */ ;
 }
 const name$o = "@firebase/app";
-const version$1 = "0.7.21";
+const version$1 = "0.7.22";
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -764,7 +776,7 @@ const name$3 = "@firebase/storage-compat";
 const name$2 = "@firebase/firestore";
 const name$1 = "@firebase/firestore-compat";
 const name = "firebase";
-const version = "9.6.11";
+const version = "9.7.0";
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2023,9 +2035,9 @@ var global = arguments[3];
         else if (c < 2048) {
             out[p++] = c >> 6 | 192;
             out[p++] = c & 63 | 128;
-        } else if ((c & 64512) === 55296 && i + 1 < str.length && (str.charCodeAt(i + 1) & 64512) === 56320) {
+        } else if ((c & 0xfc00) === 0xd800 && i + 1 < str.length && (str.charCodeAt(i + 1) & 0xfc00) === 0xdc00) {
             // Surrogate Pair
-            c = 65536 + ((c & 1023) << 10) + (str.charCodeAt(++i) & 1023);
+            c = 0x10000 + ((c & 0x03ff) << 10) + (str.charCodeAt(++i) & 0x03ff);
             out[p++] = c >> 18 | 240;
             out[p++] = c >> 12 & 63 | 128;
             out[p++] = c >> 6 & 63 | 128;
@@ -2058,9 +2070,9 @@ var global = arguments[3];
             const c2 = bytes[pos++];
             const c3 = bytes[pos++];
             const c4 = bytes[pos++];
-            const u = ((c1 & 7) << 18 | (c2 & 63) << 12 | (c3 & 63) << 6 | c4 & 63) - 65536;
-            out[c++] = String.fromCharCode(55296 + (u >> 10));
-            out[c++] = String.fromCharCode(56320 + (u & 1023));
+            const u = ((c1 & 7) << 18 | (c2 & 63) << 12 | (c3 & 63) << 6 | c4 & 63) - 0x10000;
+            out[c++] = String.fromCharCode(0xd800 + (u >> 10));
+            out[c++] = String.fromCharCode(0xdc00 + (u & 1023));
         } else {
             const c2 = bytes[pos++];
             const c3 = bytes[pos++];
@@ -2128,9 +2140,9 @@ const base64 = {
             const haveByte3 = i + 2 < input.length;
             const byte3 = haveByte3 ? input[i + 2] : 0;
             const outByte1 = byte1 >> 2;
-            const outByte2 = (byte1 & 3) << 4 | byte2 >> 4;
-            let outByte3 = (byte2 & 15) << 2 | byte3 >> 6;
-            let outByte4 = byte3 & 63;
+            const outByte2 = (byte1 & 0x03) << 4 | byte2 >> 4;
+            let outByte3 = (byte2 & 0x0f) << 2 | byte3 >> 6;
+            let outByte4 = byte3 & 0x3f;
             if (!haveByte3) {
                 outByte4 = 64;
                 if (!haveByte2) outByte3 = 64;
@@ -2198,10 +2210,10 @@ const base64 = {
             const outByte1 = byte1 << 2 | byte2 >> 4;
             output.push(outByte1);
             if (byte3 !== 64) {
-                const outByte2 = byte2 << 4 & 240 | byte3 >> 2;
+                const outByte2 = byte2 << 4 & 0xf0 | byte3 >> 2;
                 output.push(outByte2);
                 if (byte4 !== 64) {
-                    const outByte3 = byte3 << 6 & 192 | byte4;
+                    const outByte3 = byte3 << 6 & 0xc0 | byte4;
                     output.push(outByte3);
                 }
             }
@@ -2936,11 +2948,11 @@ function isObject(thing) {
         this.reset();
     }
     reset() {
-        this.chain_[0] = 1732584193;
-        this.chain_[1] = 4023233417;
-        this.chain_[2] = 2562383102;
-        this.chain_[3] = 271733878;
-        this.chain_[4] = 3285377520;
+        this.chain_[0] = 0x67452301;
+        this.chain_[1] = 0xefcdab89;
+        this.chain_[2] = 0x98badcfe;
+        this.chain_[3] = 0x10325476;
+        this.chain_[4] = 0xc3d2e1f0;
         this.inbuf_ = 0;
         this.total_ = 0;
     }
@@ -2972,7 +2984,7 @@ function isObject(thing) {
         // expand to 80 words
         for(let i2 = 16; i2 < 80; i2++){
             const t = W[i2 - 3] ^ W[i2 - 8] ^ W[i2 - 14] ^ W[i2 - 16];
-            W[i2] = (t << 1 | t >>> 31) & 4294967295;
+            W[i2] = (t << 1 | t >>> 31) & 0xffffffff;
         }
         let a = this.chain_[0];
         let b = this.chain_[1];
@@ -2985,30 +2997,30 @@ function isObject(thing) {
             if (i3 < 40) {
                 if (i3 < 20) {
                     f = d ^ b & (c ^ d);
-                    k = 1518500249;
+                    k = 0x5a827999;
                 } else {
                     f = b ^ c ^ d;
-                    k = 1859775393;
+                    k = 0x6ed9eba1;
                 }
             } else if (i3 < 60) {
                 f = b & c | d & (b | c);
-                k = 2400959708;
+                k = 0x8f1bbcdc;
             } else {
                 f = b ^ c ^ d;
-                k = 3395469782;
+                k = 0xca62c1d6;
             }
-            const t = (a << 5 | a >>> 27) + f + e + k + W[i3] & 4294967295;
+            const t = (a << 5 | a >>> 27) + f + e + k + W[i3] & 0xffffffff;
             e = d;
             d = c;
-            c = (b << 30 | b >>> 2) & 4294967295;
+            c = (b << 30 | b >>> 2) & 0xffffffff;
             b = a;
             a = t;
         }
-        this.chain_[0] = this.chain_[0] + a & 4294967295;
-        this.chain_[1] = this.chain_[1] + b & 4294967295;
-        this.chain_[2] = this.chain_[2] + c & 4294967295;
-        this.chain_[3] = this.chain_[3] + d & 4294967295;
-        this.chain_[4] = this.chain_[4] + e & 4294967295;
+        this.chain_[0] = this.chain_[0] + a & 0xffffffff;
+        this.chain_[1] = this.chain_[1] + b & 0xffffffff;
+        this.chain_[2] = this.chain_[2] + c & 0xffffffff;
+        this.chain_[3] = this.chain_[3] + d & 0xffffffff;
+        this.chain_[4] = this.chain_[4] + e & 0xffffffff;
     }
     update(bytes, length) {
         // TODO(johnlenz): tighten the function signature and remove this check
@@ -3324,12 +3336,12 @@ function validateContextObject(fnName, argumentName, context, optional) {
     for(let i = 0; i < str.length; i++){
         let c = str.charCodeAt(i);
         // Is this the lead surrogate in a surrogate pair?
-        if (c >= 55296 && c <= 56319) {
-            const high = c - 55296; // the high 10 bits.
+        if (c >= 0xd800 && c <= 0xdbff) {
+            const high = c - 0xd800; // the high 10 bits.
             i++;
             assert(i < str.length, 'Surrogate pair missing trail surrogate.');
-            const low = str.charCodeAt(i) - 56320; // the low 10 bits.
-            c = 65536 + (high << 10) + low;
+            const low = str.charCodeAt(i) - 0xdc00; // the low 10 bits.
+            c = 0x10000 + (high << 10) + low;
         }
         if (c < 128) out[p++] = c;
         else if (c < 2048) {
@@ -3358,7 +3370,7 @@ function validateContextObject(fnName, argumentName, context, optional) {
         const c = str.charCodeAt(i);
         if (c < 128) p++;
         else if (c < 2048) p += 2;
-        else if (c >= 55296 && c <= 56319) {
+        else if (c >= 0xd800 && c <= 0xdbff) {
             // Lead surrogate of a surrogate pair.  The pair together will take 4 bytes to represent.
             p += 4;
             i++; // skip trail surrogate.
@@ -4021,7 +4033,9 @@ parcelHelpers.export(exports, "__classPrivateFieldGet", ()=>__classPrivateFieldG
 );
 parcelHelpers.export(exports, "__classPrivateFieldSet", ()=>__classPrivateFieldSet
 );
-/*! *****************************************************************************
+parcelHelpers.export(exports, "__classPrivateFieldIn", ()=>__classPrivateFieldIn
+);
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -4208,12 +4222,14 @@ function __generator(thisArg, body) {
 }
 var __createBinding = Object.create ? function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, {
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
         enumerable: true,
         get: function() {
             return m[k];
         }
-    });
+    };
+    Object.defineProperty(o, k2, desc);
 } : function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -4390,6 +4406,10 @@ function __classPrivateFieldSet(receiver, state, value, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+}
+function __classPrivateFieldIn(state, receiver) {
+    if (receiver === null || typeof receiver !== "object" && typeof receiver !== "function") throw new TypeError("Cannot use 'in' operator on non-object");
+    return typeof state === "function" ? receiver === state : state.has(receiver);
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eExx3":[function(require,module,exports) {
@@ -13726,7 +13746,7 @@ function rt(t, e) {
      * The fractions of a second at nanosecond resolution.*
      */ e){
         if (this.seconds = t, this.nanoseconds = e, e < 0) throw new Q(G.INVALID_ARGUMENT, "Timestamp nanoseconds out of range: " + e);
-        if (e >= 1000000000) throw new Q(G.INVALID_ARGUMENT, "Timestamp nanoseconds out of range: " + e);
+        if (e >= 1e9) throw new Q(G.INVALID_ARGUMENT, "Timestamp nanoseconds out of range: " + e);
         if (t < -62135596800) throw new Q(G.INVALID_ARGUMENT, "Timestamp seconds out of range: " + t);
         // This will break in the year 10,000.
         if (t >= 253402300800) throw new Q(G.INVALID_ARGUMENT, "Timestamp seconds out of range: " + t);
@@ -13755,7 +13775,7 @@ function rt(t, e) {
      * @returns A new `Timestamp` representing the same point in time as the given
      *     number of milliseconds.
      */ static fromMillis(t) {
-        const e = Math.floor(t / 1000), n = Math.floor(1000000 * (t - 1000 * e));
+        const e = Math.floor(t / 1e3), n = Math.floor(1e6 * (t - 1e3 * e));
         return new at(e, n);
     }
     /**
@@ -13775,7 +13795,7 @@ function rt(t, e) {
      * @returns The point in time corresponding to this timestamp, represented as
      *     the number of milliseconds since Unix epoch 1970-01-01T00:00:00Z.
      */ toMillis() {
-        return 1000 * this.seconds + this.nanoseconds / 1000000;
+        return 1e3 * this.seconds + this.nanoseconds / 1e6;
     }
     _compareTo(t) {
         return this.seconds === t.seconds ? rt(this.nanoseconds, t.nanoseconds) : rt(this.seconds, t.seconds);
@@ -13853,7 +13873,7 @@ function rt(t, e) {
     }
     /** Returns a number representation of the version for use in spec tests. */ toMicroseconds() {
         // Convert to microseconds.
-        return 1000000 * this.timestamp.seconds + this.timestamp.nanoseconds / 1000;
+        return 1e6 * this.timestamp.seconds + this.timestamp.nanoseconds / 1e3;
     }
     toString() {
         return "SnapshotVersion(" + this.timestamp.toString() + ")";
@@ -14235,7 +14255,7 @@ const It = new RegExp(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.(\d+))?Z$/);
         // Parse the date to get the seconds.
         const s = new Date(t);
         return {
-            seconds: Math.floor(s.getTime() / 1000),
+            seconds: Math.floor(s.getTime() / 1e3),
             nanos: e
         };
     }
@@ -15039,7 +15059,7 @@ function Zt(t, e) {
     // Unicode codepoints to generate MAX_DOCUMENT_KEY, it is much easier to use
     // `(readTime + 1, DocumentKey.empty())` since `> DocumentKey.empty()` matches
     // all valid document IDs.
-    const n = t.toTimestamp().seconds, s = t.toTimestamp().nanoseconds + 1, i = ct.fromTimestamp(1000000000 === s ? new at(n + 1, 0) : new at(n, s));
+    const n = t.toTimestamp().seconds, s = t.toTimestamp().nanoseconds + 1, i = ct.fromTimestamp(1e9 === s ? new at(n + 1, 0) : new at(n, s));
     return new he(i, xt.empty(), e);
 }
 /** Creates a new offset based on the provided document. */ function ce(t) {
@@ -17250,7 +17270,7 @@ function cs() {
 /**
  * Returns a value for a Date that's appropriate to put into a proto.
  */ function ds(t, e) {
-    if (t.N) return `${new Date(1000 * e.seconds).toISOString().replace(/\.\d*/, "").replace("Z", "")}.${("000000000" + e.nanoseconds).slice(-9)}Z`;
+    if (t.N) return `${new Date(1e3 * e.seconds).toISOString().replace(/\.\d*/, "").replace("Z", "")}.${("000000000" + e.nanoseconds).slice(-9)}Z`;
     return {
         seconds: "" + e.seconds,
         nanos: e.nanoseconds
@@ -20264,7 +20284,7 @@ class yr {
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ /** A mutation queue for a specific user, backed by IndexedDB. */ yr.DEFAULT_COLLECTION_PERCENTILE = 10, yr.DEFAULT_MAX_SEQUENCE_NUMBERS_TO_COLLECT = 1000, yr.DEFAULT = new yr(41943040, yr.DEFAULT_COLLECTION_PERCENTILE, yr.DEFAULT_MAX_SEQUENCE_NUMBERS_TO_COLLECT), yr.DISABLED = new yr(-1, 0, 0);
+ */ /** A mutation queue for a specific user, backed by IndexedDB. */ yr.DEFAULT_COLLECTION_PERCENTILE = 10, yr.DEFAULT_MAX_SEQUENCE_NUMBERS_TO_COLLECT = 1e3, yr.DEFAULT = new yr(41943040, yr.DEFAULT_COLLECTION_PERCENTILE, yr.DEFAULT_MAX_SEQUENCE_NUMBERS_TO_COLLECT), yr.DISABLED = new yr(-1, 0, 0);
 class Tr {
     constructor(/**
      * The normalized userId (e.g. null UID => "" userId) used to store /
@@ -20934,7 +20954,7 @@ class Tr {
         return null !== this.vn;
     }
     Sn(t153) {
-        const e = this.Vn ? 300000 : 60000;
+        const e = this.Vn ? 3e5 : 6e4;
         O("LruGarbageCollector", `Garbage collection scheduled in ${e}ms`), this.vn = this.asyncQueue.enqueueAfterDelay("lru_garbage_collection" /* LruGarbageCollection */ , e, async ()=>{
             this.vn = null, this.Vn = !0;
             try {
@@ -22004,12 +22024,12 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
      * RemoteDocumentChanges and the ClientMetadata store based on the last update
      * time of all clients.
      */ async vs() {
-        if (this.isPrimary && !this.Ss(this.us, 1800000)) {
+        if (this.isPrimary && !this.Ss(this.us, 18e5)) {
             this.us = Date.now();
             const t183 = await this.runTransaction("maybeGarbageCollectMultiClientState", "readwrite-primary", (t185)=>{
                 const e = Di(t185, "clientMetadata");
                 return e.qt().next((t186)=>{
-                    const n = this.Ds(t186, 1800000), s = t186.filter((t)=>-1 === n.indexOf(t)
+                    const n = this.Ds(t186, 18e5), s = t186.filter((t)=>-1 === n.indexOf(t)
                     );
                     // Delete metadata for clients that are no longer considered active.
                     return pi.forEach(s, (t)=>e.delete(t.clientId)
@@ -22030,7 +22050,7 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
      * Schedules a recurring timer to update the client metadata and to either
      * extend or acquire the primary lease if the client is eligible.
      */ Is() {
-        this.os = this.Yn.enqueueAfterDelay("client_metadata_refresh" /* ClientMetadataRefresh */ , 4000, ()=>this.gs().then(()=>this.vs()
+        this.os = this.Yn.enqueueAfterDelay("client_metadata_refresh" /* ClientMetadataRefresh */ , 4e3, ()=>this.gs().then(()=>this.vs()
             ).then(()=>this.Is()
             )
         );
@@ -22056,7 +22076,7 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
             // - every clients network is disabled and no other client's tab is in
             //   the foreground.
             // - the `forceOwningTab` setting was passed in.
-            if (null !== e114 && this.Ss(e114.leaseTimestampMs, 5000) && !this.xs(e114.ownerId)) {
+            if (null !== e114 && this.Ss(e114.leaseTimestampMs, 5e3) && !this.xs(e114.ownerId)) {
                 if (this.bs(e114) && this.networkEnabled) return !0;
                 if (!this.bs(e114)) {
                     if (!e114.allowTabSynchronization) // Fail the `canActAsPrimary` check if the current leaseholder has
@@ -22074,7 +22094,7 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
                     return !1;
                 }
             }
-            return !(!this.networkEnabled || !this.inForeground) || Yr(t187).qt().next((t188)=>void 0 === this.Ds(t188, 5000).find((t)=>{
+            return !(!this.networkEnabled || !this.inForeground) || Yr(t187).qt().next((t188)=>void 0 === this.Ds(t188, 5e3).find((t)=>{
                     if (this.clientId !== t.clientId) {
                         const e = !this.networkEnabled && t.networkEnabled, n = !this.inForeground && t.inForeground, s = this.networkEnabled === t.networkEnabled;
                         if (e || n && s) return !0;
@@ -22115,7 +22135,7 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
      *
      * PORTING NOTE: This is only used for Web multi-tab.
      */ Fs() {
-        return this.runTransaction("getActiveClients", "readonly", (t190)=>Yr(t190).qt().next((t191)=>this.Ds(t191, 1800000).map((t)=>t.clientId
+        return this.runTransaction("getActiveClients", "readonly", (t190)=>Yr(t190).qt().next((t191)=>this.Ds(t191, 18e5).map((t)=>t.clientId
                 )
             )
         );
@@ -22167,7 +22187,7 @@ const zr = "Failed to obtain exclusive access to the persistence layer. To allow
     // be turned off.
     $s(t193) {
         return Jr(t193).get("owner").next((t)=>{
-            if (null !== t && this.Ss(t.leaseTimestampMs, 5000) && !this.xs(t.ownerId) && !this.bs(t) && !(this.Zn || this.allowTabSynchronization && t.allowTabSynchronization)) throw new Q(G.FAILED_PRECONDITION, zr);
+            if (null !== t && this.Ss(t.leaseTimestampMs, 5e3) && !this.xs(t.ownerId) && !this.bs(t) && !(this.Zn || this.allowTabSynchronization && t.allowTabSynchronization)) throw new Q(G.FAILED_PRECONDITION, zr);
         });
     }
     /**
@@ -22718,7 +22738,7 @@ async function io(t208, e122) {
                 // to loop over all active queries on shutdown. Especially in the browser
                 // we may not get time to do anything interesting while the current tab is
                 // closing.
-                if (e.snapshotVersion.toMicroseconds() - t.snapshotVersion.toMicroseconds() >= 300000000) return !0;
+                if (e.snapshotVersion.toMicroseconds() - t.snapshotVersion.toMicroseconds() >= 3e8) return !0;
                 // Otherwise if the only thing that has changed about a target is its resume
                 // token it's not worth persisting. Note that the RemoteStore keeps an
                 // in-memory view of the currently active targets which includes the current
@@ -24468,7 +24488,7 @@ class Bo {
                 // tight timeout which could lead to infinite timeouts and retries, we
                 // set it very large (5-10 minutes) and rely on the browser's builtin
                 // timeouts to kick in if the request isn't working.
-                forwardChannelRequestTimeoutMs: 600000
+                forwardChannelRequestTimeoutMs: 6e5
             },
             forceLongPolling: this.forceLongPolling,
             detectBufferingProxy: this.autoDetectLongPolling
@@ -24647,7 +24667,7 @@ class Bo {
      * The initial delay (used as the base delay on the first retry attempt).
      * Note that jitter will still be applied, so the actual delay could be as
      * little as 0.5*initialDelayMs.
-     */ n = 1000, s = 1.5, i = 60000){
+     */ n = 1e3, s = 1.5, i = 6e4){
         this.Yn = t, this.timerId = e, this.fo = n, this._o = s, this.wo = i, this.mo = 0, this.yo = null, /** The last backoff attempt, as epoch milliseconds. */ this.po = Date.now(), this.reset();
     }
     /**
@@ -24688,7 +24708,7 @@ class Bo {
         null !== this.yo && (this.yo.cancel(), this.yo = null);
     }
     /** Returns a random value in the range [-currentBaseMs/2, currentBaseMs/2] */ Eo() {
-        return (Math.random() - 0.5) * this.mo;
+        return (Math.random() - .5) * this.mo;
     }
 }
 /**
@@ -24799,7 +24819,7 @@ class Bo {
      */ Mo() {
         // Starts the idle time if we are in state 'Open' and are not yet already
         // running a timer (in which case the previous idle timeout still applies).
-        this.xo() && null === this.vo && (this.vo = this.Yn.enqueueAfterDelay(this.Ro, 60000, ()=>this.Oo()
+        this.xo() && null === this.vo && (this.vo = this.Yn.enqueueAfterDelay(this.Ro, 6e4, ()=>this.Oo()
         ));
     }
     /** Sends a message to the underlying stream. */ Fo(t) {
@@ -24876,7 +24896,7 @@ class Bo {
     qo(t275, e) {
         const n = this.Uo(this.Vo);
         this.stream = this.Go(t275, e), this.stream.Hr(()=>{
-            n(()=>(this.state = 2 /* Open */ , this.So = this.Yn.enqueueAfterDelay(this.Po, 10000, ()=>(this.xo() && (this.state = 3 /* Healthy */ ), Promise.resolve())
+            n(()=>(this.state = 2 /* Open */ , this.So = this.Yn.enqueueAfterDelay(this.Po, 1e4, ()=>(this.xo() && (this.state = 3 /* Healthy */ ), Promise.resolve())
                 ), this.listener.Hr())
             );
         }), this.stream.Yr((t)=>{
@@ -25123,7 +25143,7 @@ class Bo {
      * If this is the first attempt, it sets the OnlineState to Unknown and starts
      * the onlineStateTimer.
      */ ru() {
-        0 === this.nu && (this.ou("Unknown" /* Unknown */ ), this.su = this.asyncQueue.enqueueAfterDelay("online_state_timeout" /* OnlineStateTimeout */ , 10000, ()=>(this.su = null, this.uu("Backend didn't respond within 10 seconds."), this.ou("Offline" /* Offline */ ), Promise.resolve())
+        0 === this.nu && (this.ou("Unknown" /* Unknown */ ), this.su = this.asyncQueue.enqueueAfterDelay("online_state_timeout" /* OnlineStateTimeout */ , 1e4, ()=>(this.su = null, this.uu("Backend didn't respond within 10 seconds."), this.ou("Offline" /* Offline */ ), Promise.resolve())
         ));
     }
     /**
@@ -29266,7 +29286,7 @@ class ah extends Wc {
             // Firestore backend truncates precision down to microseconds. To ensure
             // offline mode works the same with regards to truncation, perform the
             // truncation immediately without waiting for the backend to do that.
-            const n = new at(t.seconds, 1000 * Math.floor(t.nanoseconds / 1000));
+            const n = new at(t.seconds, 1e3 * Math.floor(t.nanoseconds / 1e3));
             return {
                 timestampValue: ds(e.M, n)
             };
@@ -30738,7 +30758,7 @@ function p(a) {
 function da(a) {
     return Object.prototype.hasOwnProperty.call(a, ea) && a[ea] || (a[ea] = ++fa);
 }
-var ea = "closure_uid_" + (1000000000 * Math.random() >>> 0), fa = 0;
+var ea = "closure_uid_" + (1E9 * Math.random() >>> 0), fa = 0;
 function ha(a, b, c) {
     return a.call.apply(a.bind, arguments);
 }
@@ -31015,7 +31035,7 @@ A.prototype.h = function() {
     var a = this.i;
     a.preventDefault ? a.preventDefault() : a.returnValue = !1;
 };
-var B = "closure_listenable_" + (1000000 * Math.random() | 0);
+var B = "closure_listenable_" + (1E6 * Math.random() | 0);
 var Xa = 0;
 function Ya(a, b, c, d, e) {
     this.listener = a;
@@ -31062,7 +31082,7 @@ function ab(a, b, c, d) {
     }
     return -1;
 }
-var cb = "closure_lm_" + (1000000 * Math.random() | 0), db = {};
+var cb = "closure_lm_" + (1E6 * Math.random() | 0), db = {};
 function fb(a, b, c, d, e) {
     if (d && d.once) return gb(a, b, c, d, e);
     if (Array.isArray(b)) {
@@ -31135,7 +31155,7 @@ function jb(a) {
     a = a[cb];
     return a instanceof $a ? a : null;
 }
-var pb = "__closure_events_fn_" + (1000000000 * Math.random() >>> 0);
+var pb = "__closure_events_fn_" + (1E9 * Math.random() >>> 0);
 function hb(a) {
     if ("function" === typeof a) return a;
     a[pb] || (a[pb] = function(b) {
@@ -31299,7 +31319,7 @@ k.S = null;
 k.kb = function() {
     if (this.da) {
         var a = Date.now() - this.l;
-        0 < a && a < 0.8 * this.h ? this.S = this.g.setTimeout(this.j, this.h - a) : (this.S && (this.g.clearTimeout(this.S), this.S = null), D(this, "tick"), this.da && (Fb(this), this.start()));
+        0 < a && a < .8 * this.h ? this.S = this.g.setTimeout(this.j, this.h - a) : (this.S && (this.g.clearTimeout(this.S), this.S = null), D(this, "tick"), this.da && (Fb(this), this.start()));
     }
 };
 k.start = function() {
@@ -31557,7 +31577,7 @@ function fc() {
     this.g = "";
     this.h = !1;
 }
-var ec = 45000, gc = {}, hc = {};
+var ec = 45E3, gc = {}, hc = {};
 k = M.prototype;
 k.setTimeout = function(a) {
     this.P = a;
@@ -31743,13 +31763,13 @@ function sc(a, b) {
                     if (0 == e[0]) {
                         a: if (!c.u) {
                             if (c.g) {
-                                if (c.g.F + 3000 < a.F) zc(c), Ac(c);
+                                if (c.g.F + 3E3 < a.F) zc(c), Ac(c);
                                 else break a;
                             }
                             Bc(c);
                             J(18);
                         }
-                    } else c.ta = e[1], 0 < c.ta - c.U && 37500 > e[2] && c.N && 0 == c.A && !c.v && (c.v = K(q(c.ab, c), 6000));
+                    } else c.ta = e[1], 0 < c.ta - c.U && 37500 > e[2] && c.N && 0 == c.A && !c.v && (c.v = K(q(c.ab, c), 6E3));
                     if (1 >= Cc(c.i) && c.ka) {
                         try {
                             c.ka();
@@ -32159,7 +32179,7 @@ function nd(a, b) {
         d.ontimeout = ja(od, c, d, "TestLoadImage: timeout", !1, b);
         l.setTimeout(function() {
             if (d.ontimeout) d.ontimeout();
-        }, 10000);
+        }, 1E4);
         d.src = a;
     } else b(!1);
 }
@@ -32532,10 +32552,10 @@ function Id(a) {
     this.X = !0;
     this.I = this.ta = this.U = -1;
     this.Y = this.A = this.C = 0;
-    this.Pa = Hd("baseRetryDelayMs", 5000, a);
-    this.$a = Hd("retryDelaySeedMs", 10000, a);
+    this.Pa = Hd("baseRetryDelayMs", 5E3, a);
+    this.$a = Hd("retryDelaySeedMs", 1E4, a);
     this.Ya = Hd("forwardChannelMaxRetries", 2, a);
-    this.ra = Hd("forwardChannelRequestTimeoutMs", 20000, a);
+    this.ra = Hd("forwardChannelRequestTimeoutMs", 2E4, a);
     this.qa = a && a.xmlHttpFactory || void 0;
     this.Ba = a && a.Yb || !1;
     this.K = void 0;
@@ -32611,7 +32631,7 @@ k.Ha = function(a) {
     if (this.m) {
         if (this.m = null, 1 == this.G) {
             if (!a) {
-                this.V = Math.floor(100000 * Math.random());
+                this.V = Math.floor(1E5 * Math.random());
                 a = this.V++;
                 const e = new M(this, this.h, a, void 0);
                 let f = this.s;
@@ -32639,9 +32659,9 @@ k.Ha = function(a) {
                             break a;
                         }
                     }
-                    b = 1000;
+                    b = 1E3;
                 }
-                else b = 1000;
+                else b = 1E3;
                 b = Pd(this, e, b);
                 c = N(this.F);
                 R(c, "RID", a);
@@ -32669,8 +32689,8 @@ function Qd(a, b) {
     c = new M(a, a.h, c, a.C + 1);
     null === a.o && (c.H = a.s);
     b && (a.l = b.D.concat(a.l));
-    b = Pd(a, c, 1000);
-    c.setTimeout(Math.round(0.5 * a.ra) + Math.round(0.5 * a.ra * Math.random()));
+    b = Pd(a, c, 1E3);
+    c.setTimeout(Math.round(.5 * a.ra) + Math.round(.5 * a.ra * Math.random()));
     Dc(a.i, c);
     ic(c, d, b);
 }
@@ -36241,6 +36261,6 @@ function registerStorage() {
 }
 registerStorage();
 
-},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6IXwR","bNKaB"], "bNKaB", "parcelRequire8cd9")
+},{"@firebase/app":"3AcPV","@firebase/util":"ePiK6","@firebase/component":"bi1VB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jKwHT","bNKaB"], "bNKaB", "parcelRequire8cd9")
 
 //# sourceMappingURL=sign_up.0641b553.js.map

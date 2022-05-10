@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cart</title>
         <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/header.scss"> 
 
     </head>
 
@@ -26,10 +27,10 @@
         
                 <ul class="menu flex">
                         <li class="menu__item">
-                            <a href="./skincare.html">SKINCARE</a> 
+                            <a href="./index.html">HOME</a> 
                         </li>
                         <li class="menu__item">
-                            <a href="#">APPAREL</a> 
+                            <a href="./skincare.html">SKINCARE</a> 
                         </li>
                         <li class="menu__item">
                             <a href="">COMMUNITY</a> 
@@ -64,6 +65,12 @@
             </header>
 
         <h2 id="cart">CART</h2>
+
+        <ul class="cart" id="cart">
+        </ul>
+        <div id="total"></div>
+    
+        <script src="./src/cart.js" type="module"></script>
 
     </body>
 

@@ -335,7 +335,7 @@ header {
 
 .img_article {
   width: 40%;
-  border: none;
+  border: 5px #000;
 }
 
 .banner {

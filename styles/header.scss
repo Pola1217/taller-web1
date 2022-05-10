@@ -22,6 +22,8 @@
 
 }
 
+$mainfont: 'Suisse';
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -53,36 +55,37 @@ header{
     justify-content: space-between;
     position: fixed;
     z-index: 1;
-}
 
-.nav{
-    justify-content: space-between;
-}
+    nav{
+        justify-content: space-between;
 
-.logo{
-    position: absolute;
-    width:  20%;
-    height: 45%;
-    left: 40.5%;
-}
+        .logo{
+            position: absolute;
+            width:  20%;
+            height: 45%;
+            left: 40.5%;
+        }
 
-.menu_icon{
-    display: none;
-}
+        .menu_icon{
+            display: none;
+        }
 
-.menu__item {
-    font-family: 'Suisse' ;
-    font-size: 0.75em;
-    margin: 0 5px;
-    padding: 5px 5px;
-    position: relative;
-}
+        .menu{
+            &__item{
+                font-family: $mainfont;
+                font-size: 0.75em;
+                margin: 0 5px;
+                padding: 5px 5px;
+                position: relative;
 
-.menu__item a{
-    color:rgb(0, 0, 0);
-}
+                a{
+                    color:rgb(0, 0, 0);
+                }
 
-.menu__item:hover{
-    position: relative;
-    border-bottom: 3px solid #000000;
+                &:hover{
+                    border-bottom: 3px solid #000000;
+                }
+            }
+        }
+    }
 }

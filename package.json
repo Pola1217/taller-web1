@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "firebase": "^9.6.11"
+    "firebase": "^9.7.0"
   },
   "name": "shop",
   "version": "1.0.0",
@@ -21,8 +21,8 @@
   "homepage": "https://github.com/Pola1217/taller-web1#readme",
   "description": "",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.4.1",
-    "parcel": "^2.4.1",
+    "@parcel/transformer-sass": "^2.5.0",
+    "parcel": "^2.5.0",
     "process": "^0.11.10"
   }
 }

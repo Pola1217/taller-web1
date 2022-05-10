@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"7uf91":[function(require,module,exports) {
+})({"kW0qp":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -223,7 +223,7 @@ function _arrayLikeToArray(arr, len) {
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
     return arr2;
 }
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -250,11 +250,18 @@ interface ParcelModule {
     _disposeCallbacks: Array<(mixed) => void>,
   |};
 }
+interface ExtensionContext {
+  runtime: {|
+    reload(): void,
+  |};
+}
 declare var module: {bundle: ParcelRequire, ...};
 declare var HMR_HOST: string;
 declare var HMR_PORT: string;
 declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
+declare var chrome: ExtensionContext;
+declare var browser: ExtensionContext;
 */ var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
 function Module(moduleName) {
@@ -309,7 +316,12 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var id = assetsToAccept[i][1];
                     if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
                 }
-            } else window.location.reload();
+            } else if ('reload' in location) location.reload();
+            else {
+                // Web extension context
+                var ext = typeof chrome === 'undefined' ? typeof browser === 'undefined' ? null : browser : chrome;
+                if (ext && ext.runtime && ext.runtime.reload) ext.runtime.reload();
+            }
         }
         if (data.type === 'error') {
             // Log parcel errors to console
@@ -403,7 +415,7 @@ function reloadCSS() {
             var href = links[i].getAttribute('href');
             var hostname = getHostname();
             var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(location.origin) !== 0 && !servedFromHMRServer;
             if (!absolute) updateLink(links[i]);
         }
         cssTimeout = null;
@@ -514,6 +526,10 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"e0kws":[function(require,module,exports) {
+var _app = require("./app");
+var _auth = require("firebase/auth");
+var _cart = require("./functions/cart");
+var _utils = require("./utils");
 var _getProduct = require("./functions/getProduct");
 const productInfoSection = document.getElementById("productInfo");
 const productAssetsSection = document.getElementById("productAssets");
@@ -532,15 +548,23 @@ async function loadProduct() {
     };
     renderProduct(product);
 }
-function renderProduct(product) {
+function renderProduct(item) {
     productAssetsSection.innerHTML = `
-    <img class="product__mainImage" id="mainImage" src="${product.images[0]}">`;
+    <img class="product__mainImage" id="mainImage" src="${item.images[0]}">`;
     productInfoSection.innerHTML = `
-    <h1 class="product__name">${product.name}</h1>
-    <p class="product__description">${product.description}</p>
-    <h3 class="product__price">$${product.price}</h3>
+    <h1 class="product__name">${item.name}</h1>
+    <p class="product__description">${item.description}</p>
+    <h3 class="product__price">$${_utils.currencyFormat(item.price)}</h3>
     <button class="product__cart">Add to cart</button>`;
-    if (product.images.length > 1) createGallery(product.images);
+    if (item.images.length > 1) createGallery(item.images);
+    const productCartBtn = document.querySelector(".product__cart");
+    productCartBtn.addEventListener("click", (e)=>{
+        cart.push(item);
+        _utils.addProductToCart(cart);
+        if (userLogged) _cart.createFirebaseCart(_app.db, userLogged.uid, cart);
+        productCartBtn.setAttribute("disabled", true);
+        productCartBtn.innerText = "Producto añadido";
+    });
 }
 function createGallery(images) {
     const mainImage = document.getElementById("mainImage");
@@ -555,9 +579,67 @@ function createGallery(images) {
         if (e.target.tagName === "IMG") mainImage.setAttribute("src", e.target.currentSrc);
     });
 }
-loadProduct();
+_auth.onAuthStateChanged(_app.auth, async (user)=>{
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        userLogged = user;
+        cart = await _cart.getFirebaseCart(_app.db, userLogged.uid);
+        console.log(cart);
+    // ...
+    } else cart = _utils.getMyLocalCart();
+    loadProduct();
+});
 
-},{"./functions/getProduct":"i05I1"}],"i05I1":[function(require,module,exports) {
+},{"./app":"bNKaB","firebase/auth":"drt1f","./functions/cart":"b7GtJ","./utils":"jxTvD","./functions/getProduct":"i05I1"}],"b7GtJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createFirebaseCart", ()=>createFirebaseCart
+);
+parcelHelpers.export(exports, "getFirebaseCart", ()=>getFirebaseCart
+);
+var _firestore = require("firebase/firestore");
+async function createFirebaseCart(db, userId, cart) {
+    try {
+        await _firestore.setDoc(_firestore.doc(db, "cart", userId), {
+            cart
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+async function getFirebaseCart(db, userId) {
+    const docRef = _firestore.doc(db, "cart", userId);
+    const docSnap = await _firestore.getDoc(docRef);
+    const result = docSnap.data();
+    return result ? result.cart : [];
+}
+
+},{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jxTvD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
+);
+parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
+);
+parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
+);
+async function addProductToCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+function getMyLocalCart() {
+    const myCart = localStorage.getItem("cart");
+    return myCart ? JSON.parse(myCart) : [];
+}
+function currencyFormat(price) {
+    return new Intl.NumberFormat("es-CO", {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i05I1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getProduct", ()=>getProduct
@@ -575,6 +657,6 @@ async function getProduct(id) {
     }
 }
 
-},{"../app":"bNKaB","firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7uf91","e0kws"], "e0kws", "parcelRequire8cd9")
+},{"../app":"bNKaB","firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["kW0qp","e0kws"], "e0kws", "parcelRequire8cd9")
 
 //# sourceMappingURL=product.2e5833e4.js.map

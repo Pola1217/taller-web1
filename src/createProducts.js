@@ -41,4 +41,8 @@ createProductForm.addEventListener("submit", async (e) => {
     };
 
     await addProduct(db, newProduct);
+
+    createProductForm.reset();
+
 });
+

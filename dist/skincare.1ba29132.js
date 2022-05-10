@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"beBBn":[function(require,module,exports) {
+})({"7veQs":[function(require,module,exports) {
 "use strict";
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -223,7 +223,7 @@ function _arrayLikeToArray(arr, len) {
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
     return arr2;
 }
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -250,11 +250,18 @@ interface ParcelModule {
     _disposeCallbacks: Array<(mixed) => void>,
   |};
 }
+interface ExtensionContext {
+  runtime: {|
+    reload(): void,
+  |};
+}
 declare var module: {bundle: ParcelRequire, ...};
 declare var HMR_HOST: string;
 declare var HMR_PORT: string;
 declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
+declare var chrome: ExtensionContext;
+declare var browser: ExtensionContext;
 */ var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
 function Module(moduleName) {
@@ -309,7 +316,12 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
                     var id = assetsToAccept[i][1];
                     if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
                 }
-            } else window.location.reload();
+            } else if ('reload' in location) location.reload();
+            else {
+                // Web extension context
+                var ext = typeof chrome === 'undefined' ? typeof browser === 'undefined' ? null : browser : chrome;
+                if (ext && ext.runtime && ext.runtime.reload) ext.runtime.reload();
+            }
         }
         if (data.type === 'error') {
             // Log parcel errors to console
@@ -403,7 +415,7 @@ function reloadCSS() {
             var href = links[i].getAttribute('href');
             var hostname = getHostname();
             var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-            var absolute = /^https?:\/\//i.test(href) && href.indexOf(window.location.origin) !== 0 && !servedFromHMRServer;
+            var absolute = /^https?:\/\//i.test(href) && href.indexOf(location.origin) !== 0 && !servedFromHMRServer;
             if (!absolute) updateLink(links[i]);
         }
         cssTimeout = null;
@@ -518,6 +530,7 @@ var _app = require("./app");
 var _auth = require("firebase/auth");
 var _products = require("./functions/products");
 var _cart = require("./functions/cart");
+var _utils = require("./utils");
 const productSection = document.getElementById("products");
 const categoryFilter = document.getElementById("category");
 const orderFilter = document.getElementById("order");
@@ -532,6 +545,7 @@ async function loadProducts() {
     });
     products = firebaseProducts;
 }
+//shows the product and all the info
 function renderProduct(item) {
     const product = document.createElement("a");
     product.className = "product";
@@ -545,28 +559,38 @@ function renderProduct(item) {
     <div class="product__info">
         <p class="product__category">${item.category}</p> 
         <h2 class="product__name">${item.name}</h2>
-        <h3 class="product__price">$${item.price}</h3>
+        <h3 class="product__price">$${_utils.currencyFormat(item.price)}</h3>
         ${productButtonCart}
     </div>
     `;
     productSection.appendChild(product);
-    const productCartButton = product.querySelector(".product__cart");
-    productCartButton.addEventListener("click", async (e)=>{
+    const productCartBtn = product.querySelector(".product__cart");
+    productCartBtn.addEventListener("click", async (e)=>{
         e.preventDefault(); // evitar que al dar click en el boton, funcione el enlace del padre.
         cart.push(item);
-        addProductToCart();
+        _utils.addProductToCart(cart);
         if (userLogged) await _cart.createFirebaseCart(_app.db, userLogged.uid, cart);
-        productCartButton.setAttribute("disabled", true);
-        productCartButton.innerText = "Producto añadido";
+        productCartBtn.setAttribute("disabled", true);
+        productCartBtn.innerText = "Producto añadido";
     });
 }
 async function addProductToCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
+async function removeProduct(productId) {
+    const newCart = cart.filter((product)=>product.id !== productId
+    );
+    cart = newCart;
+    if (userLogged) await _cart.createFirebaseCart(_app.db, userLogged.uid, newCart);
+    _utils.addProductToCart(newCart);
+    cartSection.innerHTML = "";
+    loadCart(newCart);
+}
 function getMyCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];
 }
+//filters
 function filterBy() {
     const newCategory = categoryFilter.value;
     const newOrder = orderFilter.value;
@@ -601,7 +625,7 @@ _auth.onAuthStateChanged(_app.auth, async (user)=>{
     loadProducts();
 });
 
-},{"./app":"bNKaB","firebase/auth":"drt1f","./functions/products":"llPmz","./functions/cart":"b7GtJ"}],"llPmz":[function(require,module,exports) {
+},{"./app":"bNKaB","firebase/auth":"drt1f","./functions/products":"llPmz","./functions/cart":"b7GtJ","./utils":"jxTvD"}],"llPmz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getProducts", ()=>getProducts
@@ -647,6 +671,30 @@ async function getFirebaseCart(db, userId) {
     return result ? result.cart : [];
 }
 
-},{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["beBBn","74i2V"], "74i2V", "parcelRequire8cd9")
+},{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jxTvD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
+);
+parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
+);
+parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
+);
+async function addProductToCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+function getMyLocalCart() {
+    const myCart = localStorage.getItem("cart");
+    return myCart ? JSON.parse(myCart) : [];
+}
+function currencyFormat(price) {
+    return new Intl.NumberFormat("es-CO", {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    }).format(price);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7veQs","74i2V"], "74i2V", "parcelRequire8cd9")
 
 //# sourceMappingURL=skincare.1ba29132.js.map

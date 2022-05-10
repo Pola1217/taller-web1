@@ -2,6 +2,7 @@ import { db, auth } from "./app";
 import { onAuthStateChanged } from "firebase/auth";
 import { getProducts } from "./functions/products";
 import { createFirebaseCart, getFirebaseCart  } from "./functions/cart";
+import { addProductToCart, getMyLocalCart, currencyFormat } from "./utils";
 
 const productSection = document.getElementById("products");
 const categoryFilter = document.getElementById("category");
@@ -21,6 +22,7 @@ async function loadProducts() {
     products = firebaseProducts;
 }
 
+//shows the product and all the info
 function renderProduct(item) {
     const product = document.createElement("a");
     product.className = "product";
@@ -40,27 +42,27 @@ function renderProduct(item) {
     <div class="product__info">
         <p class="product__category">${item.category}</p> 
         <h2 class="product__name">${item.name}</h2>
-        <h3 class="product__price">$${item.price}</h3>
+        <h3 class="product__price">$${currencyFormat(item.price)}</h3>
         ${productButtonCart}
     </div>
     `;
 
     productSection.appendChild(product);
 
-    const productCartButton = product.querySelector(".product__cart");
+    const productCartBtn = product.querySelector(".product__cart");
 
-    productCartButton.addEventListener("click", async (e) => {
+    productCartBtn.addEventListener("click", async (e) => {
         e.preventDefault(); // evitar que al dar click en el boton, funcione el enlace del padre.
 
         cart.push(item);
-        addProductToCart();
+        addProductToCart(cart);
 
         if (userLogged) {
             await createFirebaseCart(db, userLogged.uid, cart);
         }
 
-        productCartButton.setAttribute("disabled", true);
-        productCartButton.innerText = "Producto añadido";
+        productCartBtn.setAttribute("disabled", true);
+        productCartBtn.innerText = "Producto añadido";
 
     });
 }
@@ -69,11 +71,29 @@ async function addProductToCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+async function removeProduct(productId) {
+    const newCart = cart.filter(product => product.id !== productId);
+    
+    cart = newCart;
+
+    if (userLogged) {
+        await createFirebaseCart(db, userLogged.uid, newCart);
+    }
+
+    addProductToCart(newCart);
+
+    cartSection.innerHTML = "";
+
+    loadCart(newCart);
+
+}
+
 function getMyCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];
 }
 
+//filters
 function filterBy(){
     const newCategory = categoryFilter.value;
     const newOrder = orderFilter.value;

@@ -6,10 +6,10 @@
     <title>SKINCARE</title>
 
     <link rel="stylesheet" href="./styles/skincare.scss">
+    <link rel="stylesheet" href="./styles/header.scss"> 
 </head>
 <body>
 
-    <!--
     <header>
 
         <nav class="nav flex">
@@ -22,10 +22,10 @@
     
             <ul class="menu flex">
                     <li class="menu__item">
-                        <a href="./skincare.html">SKINCARE</a> 
+                        <a href="./index.html">HOME</a> 
                     </li>
                     <li class="menu__item">
-                        <a href="#">APPAREL</a> 
+                        <a href="./skincare.html">SKINCARE</a> 
                     </li>
                     <li class="menu__item">
                         <a href="">COMMUNITY</a> 
@@ -58,13 +58,14 @@
     
         </nav>
         </header>
-    -->
 
+    <h1 class="title" >SHOP</h1>
 
+    <section class="filters" id="filters">
     <label for="category">Filtrar por categoría</label>
     <select name="category" id="category">
         <option value="">Todas</option>
-        <option value="console">Kits</option>
+        <option value="kits">Kits</option>
         <option value="refils">Refils</option>
         <option value="cleanse">Clenasers</option>
         <option value="care">Care</option>
@@ -77,9 +78,11 @@
         <option value="desc">Precio: De menor a mayor</option>
         <option value="desc">Precio: De menor a mayor</option>
     </select>
+</section>
 
     <section class="products" id="products">
 
+        
     <div class="loader"></div>
 
     </section>
