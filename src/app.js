@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import firebaseConfig  from "./utils/firebase.js";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 import { login, createUser, addUserToDatabase } from "./functions/auth";
@@ -16,6 +16,7 @@ const storage = getStorage(app);
 //Page components
 const createUserForm = document.getElementById("signupForm");
 const loginForm = document.getElementById("loginForm");
+const logOut = document.getElementById("account");
 
 //submit log in
 if(loginForm != null) { 
@@ -52,9 +53,34 @@ createUserForm.addEventListener("submit", async (e) => {
     await addUserToDatabase(db, newUser.uid, userInfo);
 
     alert(`Bienvenido, ${name}`);
-    // window.location.href = "/products.html";
+    window.location.href = "/index.html";
 });
 }
+
+logOut.addEventListener("click", () => {
+
+  onAuthStateChanged(auth, (user) =>{
+
+    if (user){
+
+       signOut(auth).then(() =>{
+         window.location.href = "/index.html"; 
+
+         alert("Signed out succesfully");
+
+       }).catch((error) =>{
+         
+         console.log(error);
+
+       });
+
+       }else {
+
+   window.location.href="/login.html";
+
+ }
+});
+});
 
 export {
   db,

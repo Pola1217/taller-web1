@@ -34,15 +34,15 @@ function renderProduct(item) {
     const isProductAddedToCart = cart.some((productCart) => productCart.id === item.id);
 
     const productButtonCart = isProductAddedToCart ?
-    '<button class="product__cart" disabled>Producto añadido</button>' :
-    '<button class="product__cart">Añadir al carrito</button>';
+    '<button class="product__cart" disabled>Product added</button>' :
+    '<button class="product__cart">Add to Cart</button>';
 
     product.innerHTML = `
     <img src="${coverImage}" alt="" class="product__image">
     <div class="product__info">
         <p class="product__category">${item.category}</p> 
         <h2 class="product__name">${item.name}</h2>
-        <h3 class="product__price">$${currencyFormat(item.price)}</h3>
+        <h3 class="product__price">${currencyFormat(item.price)}</h3>
         ${productButtonCart}
     </div>
     `;
@@ -62,7 +62,7 @@ function renderProduct(item) {
         }
 
         productCartBtn.setAttribute("disabled", true);
-        productCartBtn.innerText = "Producto añadido";
+        productCartBtn.innerText = "Product added";
 
     });
 }
@@ -112,6 +112,14 @@ function filterBy(){
 
     if (newOrder === "desc") {
         filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+    }
+
+    if (newOrder === "AtoZ") {
+        filteredProducts = filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (newOrder === "ZtoA") {
+        filteredProducts = filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
     
     productSection.innerHTML = "";

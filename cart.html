@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cart</title>
-        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/cart.scss">
         <link rel="stylesheet" href="./styles/header.scss"> 
 
     </head>
@@ -64,12 +64,65 @@
             </nav>
             </header>
 
-        <h2 id="cart">CART</h2>
+            <section class="titles">
+                <h2 id="cart_title">Cart</h2>
+                <h2 id="checkout__title">Checkout</h2>
+            </section>
+        
+            <section class="cart-checkout">
+                <!--CART-->
+        
+                <div class="CART">
+                <ul class="cart" id="cart">
+                </ul>
+          
+            
+                <div id="total" class="total"></div>
+                </div>
+        
+                <!--CHECKOUT-->
+                
+                <div class="CHECKOUT">
+                <section class="checkout" id="checkout">
+        
+                        <h2 class="checkout__subtitle">Shipping information</h2>
+                
+                        <form class="checkout__Form" id="checkout__Form">
+                            <input type="text" id="name" class="checkout__input" placeholder="Name">
+                
+                            <input type="text" id="address" class="checkout__input" placeholder="Address">
+                
+                            <input type="text" id="city" class="checkout__input" placeholder="City">
+                
+                            <input type="text" id="cellphone" class="checkout__input" placeholder="Cellphone number">
+        
+                        <h2 class="checkout__subtitle">Shipping Selection</h2>
+        
+                            <select id="shipping" class="checkout__shipping">
+                                <option hidden disabled selected value>Select an option </option>
+                                <option value="standard">Standard (3 - 7 Buisness Days)</option>
+                                <option value="premium">Premium (2 Buisness Days)</option>
+                            </select>
+        
+                            <p class="shipping__price" id="shipping__price"></p>
+                
+                        <h2 class="checkout__subtitle">Payment information</h2>
+                            <input type="number" id="card" class="checkout__input" placeholder="Card number">
+       
+                                <div class="checkout__Form__row">
 
-        <ul class="cart" id="cart">
-        </ul>
-        <div id="total"></div>
-    
+                                    <input type="date" id="expiration" class="checkout__Form__row__date" placeholder="expiration">
+                                    <input type="text" id="code" class="checkout__Form__row__code" placeholder="Security code">
+        
+                                </div>
+                
+                            <input type="submit" value="BUY NOW" class="checkout__submit">
+        
+                        </form>
+                    </div>
+                </section>
+            </div>
+        
         <script src="./src/cart.js" type="module"></script>
 
     </body>

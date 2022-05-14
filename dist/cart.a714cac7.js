@@ -533,6 +533,7 @@ var _utils = require("./utils");
 var _index = require("./utils/index");
 const cartSection = document.getElementById("cart");
 const totalSection = document.getElementById("total");
+const checkoutForm = document.getElementById("checkout__Form");
 let cart = [];
 function loadCart(cart1) {
     let total = 0;
@@ -558,16 +559,55 @@ function renderProduct(product) {
     <img src="${product.images[0]}" class="product__image">
     <h2 class="product__name">${product.name}</h2>
     <h3 class="product__price">${_index.currencyFormat(product.price)}</h3>
-    <button class="product__delete">Eliminar producto</button>
+    <button class="product__delete">X</button>
     `;
     cartSection.appendChild(productCart);
     productCart.addEventListener("click", (e)=>{
         if (e.target.tagName === "BUTTON") {
             console.log("remove it!");
+            alert("Log in to remove");
             removeProduct(product.id);
         }
     });
 }
+checkoutForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    console.log("clicked");
+    const name = checkoutForm.name.value;
+    const address = checkoutForm.address.value;
+    const city = checkoutForm.city.value;
+    const cellphone = checkoutForm.cellphone.value;
+    const shipping = checkoutForm.shipping.value;
+    const cardNum = checkoutForm.card.value;
+    const expiration = checkoutForm.expiration.value;
+    const code = checkoutForm.code.value;
+    const userInfo = {
+        firstname,
+        lastname,
+        address,
+        city,
+        cellphone
+    };
+    const paymentInfo = {
+        shipping,
+        cardNum,
+        expiration,
+        code
+    };
+    const orderComplete = {
+        userInfo,
+        paymentInfo,
+        order,
+        finalTotal
+    };
+    //Add order to firestore database
+    await addOrder(_app.db, orderComplete, userLogged.uid);
+    //Show popup
+    popup.classList.add('popup--open');
+    //Delete bag from firestore and local storage
+    deleteFromBag(_app.db, userLogged.uid);
+    deleteMyLocalBag();
+});
 _auth.onAuthStateChanged(_app.auth, async (user)=>{
     if (user) {
         // User is signed in, see docs for a list of available properties
@@ -595,7 +635,7 @@ async function createFirebaseCart(db, userId, cart) {
         console.log(e);
     }
 }
-async function getFirebaseCart(db, userId) {
+async function getFirebaseCart(db, userId, boolean) {
     const docRef = _firestore.doc(db, "cart", userId);
     const docSnap = await _firestore.getDoc(docRef);
     const result = docSnap.data();

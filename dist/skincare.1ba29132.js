@@ -553,13 +553,13 @@ function renderProduct(item) {
     const coverImage = item.images ? item.images[0] : "https://cdn1.iconfinder.com/data/icons/business-company-1/500/image-512.png";
     const isProductAddedToCart = cart.some((productCart)=>productCart.id === item.id
     );
-    const productButtonCart = isProductAddedToCart ? '<button class="product__cart" disabled>Producto añadido</button>' : '<button class="product__cart">Añadir al carrito</button>';
+    const productButtonCart = isProductAddedToCart ? '<button class="product__cart" disabled>Product added</button>' : '<button class="product__cart">Add to Cart</button>';
     product.innerHTML = `
     <img src="${coverImage}" alt="" class="product__image">
     <div class="product__info">
         <p class="product__category">${item.category}</p> 
         <h2 class="product__name">${item.name}</h2>
-        <h3 class="product__price">$${_utils.currencyFormat(item.price)}</h3>
+        <h3 class="product__price">${_utils.currencyFormat(item.price)}</h3>
         ${productButtonCart}
     </div>
     `;
@@ -571,7 +571,7 @@ function renderProduct(item) {
         _utils.addProductToCart(cart);
         if (userLogged) await _cart.createFirebaseCart(_app.db, userLogged.uid, cart);
         productCartBtn.setAttribute("disabled", true);
-        productCartBtn.innerText = "Producto añadido";
+        productCartBtn.innerText = "Product added";
     });
 }
 async function addProductToCart() {
@@ -601,6 +601,10 @@ function filterBy() {
     if (newOrder === "asc") filteredProducts = filteredProducts.sort((a, b)=>b.price - a.price
     );
     if (newOrder === "desc") filteredProducts = filteredProducts.sort((a, b)=>a.price - b.price
+    );
+    if (newOrder === "AtoZ") filteredProducts = filteredProducts.sort((a, b)=>a.name.localeCompare(b.name)
+    );
+    if (newOrder === "ZtoA") filteredProducts = filteredProducts.sort((a, b)=>b.name.localeCompare(a.name)
     );
     productSection.innerHTML = "";
     filteredProducts.forEach((product)=>{
@@ -664,7 +668,7 @@ async function createFirebaseCart(db, userId, cart) {
         console.log(e);
     }
 }
-async function getFirebaseCart(db, userId) {
+async function getFirebaseCart(db, userId, boolean) {
     const docRef = _firestore.doc(db, "cart", userId);
     const docSnap = await _firestore.getDoc(docRef);
     const result = docSnap.data();

@@ -1,0 +1,193 @@
+$font-color: #000000;
+$main-font: 'SuisseBook';
+$sub-font: 'SuisseMono';
+
+@mixin titles {
+    font-family: $main-font;
+    color: $font-color;
+    font-size: 1.2em;
+    padding-top: 7%;
+    margin-left: 50px;
+}
+@mixin subtitles {
+    font-family: $main-font;
+    color: $font-color;
+    padding-top: 2%;
+    font-size: 1.2em;
+    margin-left: 50px;
+}
+
+
+@mixin inputs {
+    font-family:  SuisseBook;
+    font-size: 0.95em;
+    line-height: 21px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    width: 100%;
+    height: 20%;
+    margin-bottom: 17px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 25px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.align_items_center{
+    align-items: center;    
+}
+
+.titles{
+    display: flex;
+    align-items: center;
+    gap: 720px;
+    @include titles();
+}
+
+.cart-checkout{
+    display: flex;
+    margin-top: 1%;
+}
+
+.CART{
+    width: 44%;
+    margin-left: 40px;
+    
+}
+
+.total{
+    border-top: 2px solid #000000;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 10%;
+    padding-left: 55%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    font-family: 'SuisseMono';
+}
+
+.product{
+    width: 100%;
+    padding-left: 5%;
+    padding-bottom: 1%;
+    display:flex;
+    align-items: center;
+
+    &__image {
+        width:100%;
+        height: 300px;
+        object-fit: contain;
+    }
+
+    &__name{
+        width: 100%;
+        margin-left: 5%;
+        font-family: 'SuisseBook';
+        font-size: 0.90em;
+        color: $font-color;
+    }
+
+    &__price{
+        width: 100%;
+        margin-top: 10%;
+        margin-left: 10%;
+        font-family: 'SuisseMono';
+        font-size: 1.20em;
+        color: $font-color;
+    }
+
+    &__delete{
+        width: 50%;
+        height: 30%;  
+        padding: 5px;
+        font-family: 'SuisseMono';
+        background: none;
+        font-size: 0.90em;
+        color:#ff5f37;
+        border: none;
+
+        &:hover{
+           color: #e40000;
+        }
+    }
+}
+
+.checkout{
+    width: 80%;
+    height: 100%;
+    margin-left: 15%;
+    border-left: 1px solid #adadad;
+
+    &__subtitle{
+        @include subtitles();
+    }
+
+    &__Form{
+        position: relative;
+        padding-left: 5%;
+        
+        &__row{
+            display: flex;
+            align-items: center;
+            gap: 2%;
+            width: 100%;
+    
+            &__date{
+                width: 10%;
+                @include inputs();
+            }
+            
+            &__code{
+                width: 10%;
+                @include inputs();
+            }
+    
+        }
+    }
+
+    &__input{
+        @include inputs();
+    }
+    
+    &__shipping{
+        @include inputs();
+    }
+
+    &__submit{
+        width: 55%;
+        height: 20%;
+        padding: 15px;
+        font-family: 'SuisseMono';
+        color: rgb(255, 255, 255);
+        font-size: 0.85em;
+        background-color:#ff5f37;
+        border: none;
+        margin: 20px 0 0 125px;
+   
+
+        &:hover{
+            background-color: #e40000;
+        }
+    }
+
+    
+}
+
+
+
+

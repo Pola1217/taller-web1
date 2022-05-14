@@ -1,0 +1,231 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.align_items_center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.titles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 720px;
+  font-family: "SuisseBook";
+  color: #000000;
+  font-size: 1.2em;
+  padding-top: 7%;
+  margin-left: 50px;
+}
+
+.cart-checkout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1%;
+}
+
+.CART {
+  width: 44%;
+  margin-left: 40px;
+}
+
+.total {
+  border-top: 2px solid #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10%;
+  padding-left: 55%;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  font-family: 'SuisseMono';
+}
+
+.product {
+  width: 100%;
+  padding-left: 5%;
+  padding-bottom: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product__image {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.product__name {
+  width: 100%;
+  margin-left: 5%;
+  font-family: 'SuisseBook';
+  font-size: 0.90em;
+  color: #000000;
+}
+
+.product__price {
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 10%;
+  font-family: 'SuisseMono';
+  font-size: 1.20em;
+  color: #000000;
+}
+
+.product__delete {
+  width: 50%;
+  height: 30%;
+  padding: 5px;
+  font-family: 'SuisseMono';
+  background: none;
+  font-size: 0.90em;
+  color: #ff5f37;
+  border: none;
+}
+
+.product__delete:hover {
+  color: #e40000;
+}
+
+.checkout {
+  width: 80%;
+  height: 100%;
+  margin-left: 15%;
+  border-left: 1px solid #adadad;
+}
+
+.checkout__subtitle {
+  font-family: "SuisseBook";
+  color: #000000;
+  padding-top: 2%;
+  font-size: 1.2em;
+  margin-left: 50px;
+}
+
+.checkout__Form {
+  position: relative;
+  padding-left: 5%;
+}
+
+.checkout__Form__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2%;
+  width: 100%;
+}
+
+.checkout__Form__row__date {
+  width: 10%;
+  font-family: SuisseBook;
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 17px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.checkout__Form__row__code {
+  width: 10%;
+  font-family: SuisseBook;
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 17px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.checkout__input {
+  font-family: SuisseBook;
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 17px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.checkout__shipping {
+  font-family: SuisseBook;
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 17px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.checkout__submit {
+  width: 55%;
+  height: 20%;
+  padding: 15px;
+  font-family: 'SuisseMono';
+  color: white;
+  font-size: 0.85em;
+  background-color: #ff5f37;
+  border: none;
+  margin: 20px 0 0 125px;
+}
+
+.checkout__submit:hover {
+  background-color: #e40000;
+}
+/*# sourceMappingURL=cart.css.map */

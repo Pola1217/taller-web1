@@ -552,6 +552,7 @@ const storage = _storage.getStorage(app);
 //Page components
 const createUserForm = document.getElementById("signupForm");
 const loginForm = document.getElementById("loginForm");
+const logOut = document.getElementById("account");
 //submit log in
 if (loginForm != null) loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -575,7 +576,18 @@ if (createUserForm != null) createUserForm.addEventListener("submit", async (e)=
     const newUser = await _auth1.createUser(auth, userInfo);
     await _auth1.addUserToDatabase(db, newUser.uid, userInfo);
     alert(`Bienvenido, ${name}`);
-// window.location.href = "/products.html";
+    window.location.href = "/index.html";
+});
+logOut.addEventListener("click", ()=>{
+    _auth.onAuthStateChanged(auth, (user)=>{
+        if (user) _auth.signOut(auth).then(()=>{
+            window.location.href = "/index.html";
+            alert("Signed out succesfully");
+        }).catch((error)=>{
+            console.log(error);
+        });
+        else window.location.href = "/login.html";
+    });
 });
 
 },{"./utils/firebase.js":"bYU7u","firebase/app":"5wGMN","firebase/auth":"drt1f","firebase/firestore":"cJafS","./functions/auth":"cEvP7","firebase/storage":"9dDUH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bYU7u":[function(require,module,exports) {

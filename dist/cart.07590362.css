@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.align_items_center {
+  align-items: center;
+}
+
+.titles {
+  color: #000;
+  align-items: center;
+  gap: 720px;
+  margin-left: 50px;
+  padding-top: 7%;
+  font-family: SuisseBook;
+  font-size: 1.2em;
+  display: flex;
+}
+
+.cart-checkout {
+  margin-top: 1%;
+  display: flex;
+}
+
+.CART {
+  width: 44%;
+  margin-left: 40px;
+}
+
+.total {
+  border-top: 2px solid #000;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 10%;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 55%;
+  font-family: SuisseMono;
+  display: flex;
+}
+
+.product {
+  width: 100%;
+  align-items: center;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  display: flex;
+}
+
+.product__image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+.product__name {
+  width: 100%;
+  color: #000;
+  margin-left: 5%;
+  font-family: SuisseBook;
+  font-size: .9em;
+}
+
+.product__price {
+  width: 100%;
+  color: #000;
+  margin-top: 10%;
+  margin-left: 10%;
+  font-family: SuisseMono;
+  font-size: 1.2em;
+}
+
+.product__delete {
+  width: 50%;
+  height: 30%;
+  color: #ff5f37;
+  background: none;
+  border: none;
+  padding: 5px;
+  font-family: SuisseMono;
+  font-size: .9em;
+}
+
+.product__delete:hover {
+  color: #e40000;
+}
+
+.checkout {
+  width: 80%;
+  height: 100%;
+  border-left: 1px solid #adadad;
+  margin-left: 15%;
+}
+
+.checkout__subtitle {
+  color: #000;
+  margin-left: 50px;
+  padding-top: 2%;
+  font-family: SuisseBook;
+  font-size: 1.2em;
+}
+
+.checkout__Form {
+  padding-left: 5%;
+  position: relative;
+}
+
+.checkout__Form__row {
+  width: 100%;
+  align-items: center;
+  gap: 2%;
+  display: flex;
+}
+
+.checkout__Form__row__date, .checkout__Form__row__code {
+  width: 10%;
+  box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-bottom: 17px;
+  padding: 10px;
+  font-family: SuisseBook;
+  font-size: .95em;
+  line-height: 21px;
+}
+
+.checkout__input, .checkout__shipping {
+  box-sizing: border-box;
+  width: 100%;
+  height: 20%;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-bottom: 17px;
+  padding: 10px;
+  font-family: SuisseBook;
+  font-size: .95em;
+  line-height: 21px;
+}
+
+.checkout__submit {
+  width: 55%;
+  height: 20%;
+  color: #fff;
+  background-color: #ff5f37;
+  border: none;
+  margin: 20px 0 0 125px;
+  padding: 15px;
+  font-family: SuisseMono;
+  font-size: .85em;
+}
+
+.checkout__submit:hover {
+  background-color: #e40000;
+}
+
+/*# sourceMappingURL=cart.07590362.css.map */

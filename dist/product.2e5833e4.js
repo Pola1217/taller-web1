@@ -608,7 +608,7 @@ async function createFirebaseCart(db, userId, cart) {
         console.log(e);
     }
 }
-async function getFirebaseCart(db, userId) {
+async function getFirebaseCart(db, userId, boolean) {
     const docRef = _firestore.doc(db, "cart", userId);
     const docSnap = await _firestore.getDoc(docRef);
     const result = docSnap.data();

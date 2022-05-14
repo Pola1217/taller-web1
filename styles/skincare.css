@@ -1,0 +1,139 @@
+@font-face {
+  font-family: SuisseMono;
+  src: url("../fonts/SuisseMono.ttf");
+}
+
+@font-face {
+  font-family: SuisseBook;
+  src: url("../fonts/SuisseBook.ttf");
+}
+
+@font-face {
+  font-family: Windsor;
+  src: url("../fonts/Windsor-Bold.ttf");
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.align_items_center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title {
+  font-family: 'Windsor';
+  position: relative;
+  color: #000000;
+  font-size: 2.3em;
+  top: 90px;
+  margin-left: 30px;
+}
+
+.filters {
+  font-family: 'SuisseBook';
+  font-size: 0.95em;
+  max-width: 100%;
+  margin-left: 2%;
+}
+
+#category {
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 10%;
+  height: 3%;
+  margin: 8% 2% 1% 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#order {
+  font-size: 0.95em;
+  line-height: 21px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 10%;
+  height: 3%;
+  margin: 8% 2% 1% 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.products {
+  max-width: 100%;
+  padding: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (5fr)[4];
+      grid-template-columns: repeat(4, 5fr);
+  gap: 10px;
+}
+
+.product {
+  margin-bottom: 25%;
+}
+
+.product__image {
+  width: 100%;
+  height: 450px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.product__name {
+  margin-left: 2%;
+  margin-top: 2%;
+  font-family: 'SuisseBook';
+  font-size: 1.25em;
+  color: #000000;
+}
+
+.product__category {
+  display: none;
+}
+
+.product__price {
+  margin-left: 2%;
+  margin-top: 2%;
+  font-family: 'SuisseBook';
+  font-size: 1.25em;
+  color: #000000;
+}
+
+.product__cart {
+  width: 55%;
+  height: 20%;
+  padding: 10px;
+  font-family: 'SuisseMono';
+  color: white;
+  font-size: 0.85em;
+  background-color: #ff5f37;
+  border: none;
+  margin: 20px 0 0 55px;
+}
+
+.product__cart:hover {
+  background-color: #e40000;
+}
+
+.product__cart:disabled {
+  background-color: #720000;
+}
+/*# sourceMappingURL=skincare.css.map */
