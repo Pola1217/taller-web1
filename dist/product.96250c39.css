@@ -1,0 +1,66 @@
+.product__info {
+  margin-bottom: 300px !important;
+}
+
+.product {
+  padding-left: 4% !important;
+}
+
+.product__mainImage {
+  height: 600px !important;
+}
+
+.product__name {
+  margin-left: 30% !important;
+}
+
+.product__description {
+  width: 100% !important;
+  margin-top: 10% !important;
+  margin-left: 30% !important;
+  font-family: Suisse !important;
+  font-size: 1em !important;
+}
+
+.product__howToUse {
+  width: 60% !important;
+  border-bottom: 2px solid #000 !important;
+  margin-top: 10% !important;
+  margin-left: 30% !important;
+  font-family: Suisse !important;
+  font-size: 1em !important;
+}
+
+.product__howTo {
+  width: 100% !important;
+  margin-top: 10% !important;
+  margin-left: 30% !important;
+  font-family: Suisse !important;
+  font-size: 1em !important;
+}
+
+.product__price {
+  width: 100% !important;
+  margin-top: 10% !important;
+  margin-left: 30% !important;
+  font-family: SuisseBook !important;
+  font-size: 1.25em !important;
+}
+
+.product__cart {
+  width: 100% !important;
+  color: #fff !important;
+  background-color: #ff5f37 !important;
+  border: none !important;
+  margin-top: 10% !important;
+  margin-left: 30% !important;
+  padding: 10px !important;
+  font-family: SuisseMono !important;
+  font-size: .85em !important;
+}
+
+.product__cart:hover {
+  background-color: #e40000 !important;
+}
+
+/*# sourceMappingURL=product.96250c39.css.map */

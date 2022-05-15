@@ -1,13 +1,14 @@
 import { auth, db } from "./app";
 import { onAuthStateChanged } from "firebase/auth";
-import { getFirebaseCart, createFirebaseCart } from "./functions/cart";
-import { addProductToCart } from "./utils";
+import { getFirebaseCart, createFirebaseCart, createFirebaseOrder, deleteCart } from "./functions/cart";
+import { addProductToCart, deleteMyLocalCart } from "./utils";
 import { getMyLocalCart, currencyFormat } from "./utils/index";
 
 const cartSection = document.getElementById("cart");
 const totalSection = document.getElementById("total");
 const checkoutForm = document.getElementById("checkout__Form");
 let cart = [];
+
 
 function loadCart(cart) {
     let total = 0;
@@ -62,48 +63,45 @@ function renderProduct(product) {
 
 checkoutForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log("clicked");
-
+    
     const name = checkoutForm.name.value;
     const address = checkoutForm.address.value;
     const city = checkoutForm.city.value;
     const cellphone = checkoutForm.cellphone.value;
-    const shipping = checkoutForm.shipping.value;
     const cardNum = checkoutForm.card.value;
     const expiration = checkoutForm.expiration.value;
     const code = checkoutForm.code.value;
 
+    let order = [];
+
+
     const userInfo = {
-       firstname,
-       lastname,
+       name,
        address,
        city, 
        cellphone 
     }
 
     const paymentInfo = {
-        shipping, 
         cardNum,
         expiration,
         code
     }
 
-    const orderComplete = {
+    const fullOrder = {
         userInfo,
         paymentInfo,
         order,
-        finalTotal
+        total
     }
 
-    //Add order to firestore database
-    await addOrder(db, orderComplete, userLogged.uid);
+       await createFirebaseOrder(db, userLogged.uid, fullOrder);
 
-    //Show popup
-    popup.classList.add('popup--open');
-    //Delete bag from firestore and local storage
-    deleteFromBag(db, userLogged.uid);
-    deleteMyLocalBag();
+    alert("ORDER READY");
+    window.location.href = "/index.html";
 
+    /*deleteCart(db, userLogged.uid);
+    deleteMyLocalCart();*/
 });
 
 onAuthStateChanged(auth, async (user) => {

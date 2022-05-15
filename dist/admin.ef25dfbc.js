@@ -543,13 +543,13 @@ createProductForm.addEventListener("submit", async (e)=>{
     console.log("Create a new product");
     const name = createProductForm.name.value;
     const description = createProductForm.description.value;
+    const howToUse = createProductForm.howToUse.value;
     const price = createProductForm.price.value;
     const category = createProductForm.category.value;
     const stock = createProductForm.stock.value;
     const images = createProductForm.images.files;
     let gallery = [];
     if (images.length) {
-        // Vamos a subir las imagenes a firestore
         const uploadedImages = await _addProducts.uploadImages(_app1.storage, [
             ...images
         ]);
@@ -558,6 +558,7 @@ createProductForm.addEventListener("submit", async (e)=>{
     const newProduct = {
         name,
         description,
+        howToUse,
         stock,
         category,
         price,
@@ -580,7 +581,7 @@ var _app = require("../app");
 async function addProduct(db, product) {
     try {
         await _firestore.addDoc(_firestore.collection(db, "products"), product);
-        console.log("Product added! :)");
+        alert("Product added! :)");
     } catch (e) {
         console.log(e);
     }

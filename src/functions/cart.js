@@ -10,7 +10,7 @@ async function createFirebaseCart(db, userId, cart) {
     }
 }
 
-async function getFirebaseCart(db, userId, boolean) {
+async function getFirebaseCart(db, userId) {
     const docRef = doc(db, "cart", userId);
     const docSnap = await getDoc(docRef);
     const result = docSnap.data();
@@ -18,7 +18,30 @@ async function getFirebaseCart(db, userId, boolean) {
 
 }
 
+async function createFirebaseOrder (db, userId, order) {
+    try {
+        await setDoc(doc(db, "order", userId), {
+            order
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}   
+
+async function deleteCart(db, userId) {
+    try {
+        const docRef = doc(db, "cart", userId);
+        await deleteDoc(docRef)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
 export {
     createFirebaseCart,
-    getFirebaseCart
+    getFirebaseCart,
+    createFirebaseOrder,
+    deleteCart
 }

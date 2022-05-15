@@ -5,7 +5,7 @@ import { storage, db } from "../app";
 async function addProduct(db, product) {
     try {
         await addDoc(collection(db, "products"), product);
-        console.log("Product added! :)");
+        alert("Product added! :)");
     } catch(e) {
         console.log(e);
     }

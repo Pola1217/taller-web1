@@ -1,0 +1,18 @@
+/*Ipad Pro*/
+@media all and (max-width: 1180px) {
+  /*header*/
+  .logo {
+    position: absolute !important;
+    width: 20% !important;
+    height: 30% !important;
+    left: 42.5% !important;
+  }
+  .menu_icon {
+    display: none !important;
+  }
+  .menu__item {
+    font-size: 0.4375em !important;
+    padding: 5px 5px !important;
+  }
+}
+/*# sourceMappingURL=header-mediaqueries.css.map */

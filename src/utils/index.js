@@ -7,6 +7,10 @@ function getMyLocalCart() {
     return myCart ? JSON.parse(myCart) : [];
 }
 
+function deleteMyLocalCart() {
+    window.localStorage.removeItem("cart");
+}
+
 function currencyFormat(price) {
     return new Intl.NumberFormat("es-CO", {
         style: 'currency',
@@ -15,8 +19,11 @@ function currencyFormat(price) {
     }).format(price);
 }
 
+
+
 export {
     addProductToCart,
     getMyLocalCart,
+    deleteMyLocalCart,
     currencyFormat
 }

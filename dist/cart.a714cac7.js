@@ -572,42 +572,36 @@ function renderProduct(product) {
 }
 checkoutForm.addEventListener("submit", async (e)=>{
     e.preventDefault();
-    console.log("clicked");
     const name = checkoutForm.name.value;
     const address = checkoutForm.address.value;
     const city = checkoutForm.city.value;
     const cellphone = checkoutForm.cellphone.value;
-    const shipping = checkoutForm.shipping.value;
     const cardNum = checkoutForm.card.value;
     const expiration = checkoutForm.expiration.value;
     const code = checkoutForm.code.value;
+    let order = [];
     const userInfo = {
-        firstname,
-        lastname,
+        name,
         address,
         city,
         cellphone
     };
     const paymentInfo = {
-        shipping,
         cardNum,
         expiration,
         code
     };
-    const orderComplete = {
+    const fullOrder = {
         userInfo,
         paymentInfo,
         order,
-        finalTotal
+        total
     };
-    //Add order to firestore database
-    await addOrder(_app.db, orderComplete, userLogged.uid);
-    //Show popup
-    popup.classList.add('popup--open');
-    //Delete bag from firestore and local storage
-    deleteFromBag(_app.db, userLogged.uid);
-    deleteMyLocalBag();
-});
+    await _cart.createFirebaseOrder(_app.db, userLogged.uid, fullOrder);
+    alert("ORDER READY");
+    window.location.href = "/index.html";
+/*deleteCart(db, userLogged.uid);
+    deleteMyLocalCart();*/ });
 _auth.onAuthStateChanged(_app.auth, async (user)=>{
     if (user) {
         // User is signed in, see docs for a list of available properties
@@ -625,6 +619,10 @@ parcelHelpers.export(exports, "createFirebaseCart", ()=>createFirebaseCart
 );
 parcelHelpers.export(exports, "getFirebaseCart", ()=>getFirebaseCart
 );
+parcelHelpers.export(exports, "createFirebaseOrder", ()=>createFirebaseOrder
+);
+parcelHelpers.export(exports, "deleteCart", ()=>deleteCart
+);
 var _firestore = require("firebase/firestore");
 async function createFirebaseCart(db, userId, cart) {
     try {
@@ -635,11 +633,28 @@ async function createFirebaseCart(db, userId, cart) {
         console.log(e);
     }
 }
-async function getFirebaseCart(db, userId, boolean) {
+async function getFirebaseCart(db, userId) {
     const docRef = _firestore.doc(db, "cart", userId);
     const docSnap = await _firestore.getDoc(docRef);
     const result = docSnap.data();
     return result ? result.cart : [];
+}
+async function createFirebaseOrder(db, userId, order) {
+    try {
+        await _firestore.setDoc(_firestore.doc(db, "order", userId), {
+            order
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+async function deleteCart(db, userId) {
+    try {
+        const docRef = _firestore.doc(db, "cart", userId);
+        await deleteDoc(docRef);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 },{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jxTvD":[function(require,module,exports) {
@@ -649,6 +664,8 @@ parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
 );
 parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
 );
+parcelHelpers.export(exports, "deleteMyLocalCart", ()=>deleteMyLocalCart
+);
 parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
 );
 async function addProductToCart(cart) {
@@ -657,6 +674,9 @@ async function addProductToCart(cart) {
 function getMyLocalCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];
+}
+function deleteMyLocalCart() {
+    window.localStorage.removeItem("cart");
 }
 function currencyFormat(price) {
     return new Intl.NumberFormat("es-CO", {

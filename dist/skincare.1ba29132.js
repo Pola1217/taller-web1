@@ -658,6 +658,10 @@ parcelHelpers.export(exports, "createFirebaseCart", ()=>createFirebaseCart
 );
 parcelHelpers.export(exports, "getFirebaseCart", ()=>getFirebaseCart
 );
+parcelHelpers.export(exports, "createFirebaseOrder", ()=>createFirebaseOrder
+);
+parcelHelpers.export(exports, "deleteCart", ()=>deleteCart
+);
 var _firestore = require("firebase/firestore");
 async function createFirebaseCart(db, userId, cart) {
     try {
@@ -668,11 +672,28 @@ async function createFirebaseCart(db, userId, cart) {
         console.log(e);
     }
 }
-async function getFirebaseCart(db, userId, boolean) {
+async function getFirebaseCart(db, userId) {
     const docRef = _firestore.doc(db, "cart", userId);
     const docSnap = await _firestore.getDoc(docRef);
     const result = docSnap.data();
     return result ? result.cart : [];
+}
+async function createFirebaseOrder(db, userId, order) {
+    try {
+        await _firestore.setDoc(_firestore.doc(db, "order", userId), {
+            order
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+async function deleteCart(db, userId) {
+    try {
+        const docRef = _firestore.doc(db, "cart", userId);
+        await deleteDoc(docRef);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 },{"firebase/firestore":"cJafS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jxTvD":[function(require,module,exports) {
@@ -682,6 +703,8 @@ parcelHelpers.export(exports, "addProductToCart", ()=>addProductToCart
 );
 parcelHelpers.export(exports, "getMyLocalCart", ()=>getMyLocalCart
 );
+parcelHelpers.export(exports, "deleteMyLocalCart", ()=>deleteMyLocalCart
+);
 parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
 );
 async function addProductToCart(cart) {
@@ -690,6 +713,9 @@ async function addProductToCart(cart) {
 function getMyLocalCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];
+}
+function deleteMyLocalCart() {
+    window.localStorage.removeItem("cart");
 }
 function currencyFormat(price) {
     return new Intl.NumberFormat("es-CO", {

@@ -17,6 +17,7 @@ createProductForm.addEventListener("submit", async (e) => {
 
     const name = createProductForm.name.value;
     const description = createProductForm.description.value;
+    const howToUse = createProductForm.howToUse.value;
     const price = createProductForm.price.value;
     const category = createProductForm.category.value;
     const stock = createProductForm.stock.value;
@@ -25,15 +26,14 @@ createProductForm.addEventListener("submit", async (e) => {
     let gallery = [];
 
     if (images.length) {
-        // Vamos a subir las imagenes a firestore
         const uploadedImages = await uploadImages(storage, [...images]);
-
         gallery = await Promise.all(uploadedImages);
     }
 
     const newProduct = {
         name,
         description,
+        howToUse,
         stock,
         category,
         price,
@@ -45,4 +45,3 @@ createProductForm.addEventListener("submit", async (e) => {
     createProductForm.reset();
 
 });
-

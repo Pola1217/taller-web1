@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+
     <link rel="stylesheet" href="./styles/createProducts.css">
     <link rel="stylesheet" href="./styles/header.scss"> 
+    <link rel="stylesheet" href="./styles/header-mediaqueries.scss">
 
 </head>
 <body>
@@ -27,15 +29,6 @@
                     <li class="menu__item">
                         <a href="./skincare.html">SKINCARE</a> 
                     </li>
-                    <li class="menu__item">
-                        <a href="">COMMUNITY</a> 
-                    </li>
-                    <li class="menu__item">
-                        <a href="">ABOUT</a> 
-                    </li>
-                    <li class="menu__item">
-                        <a href="">REWARDS</a> 
-                    </li>
             </ul>
     
             <img src="./img/menu_mobile.png"
@@ -46,11 +39,8 @@
             <ul class="flex 
             align_items_center">
                      <li class="menu__item">
-                        <a href="./login.html">ACCOUNT</a> 
+                        <a href="./login.html" id="account">ACCOUNT</a> 
                      </li>
-                     <li class="menu__item">
-                        <a href="">SEARCH</a> 
-                    </li>
                     <li class="menu__item">
                         <a href="./cart.html">CART</a> 
                     </li>
@@ -58,13 +48,13 @@
     
         </nav>
         </header>
-
             <form id="add_product_from">
             
             <h1 id="title">Agrega un nuevo producto</h1>
 
-            <input class="addInput" id="name" type="text" placeholder="Nombre"/>
-            <textarea class="addInput" id="description" type="text" placeholder="Descripción"/></textarea>
+            <input class="addInput" id="name" type="text" placeholder="Name"/>
+            <textarea class="addInput" id="description" type="text" placeholder="Description"/></textarea>
+            <textarea class="addInput" id="howToUse" type="text" placeholder="How To Use"/></textarea>
             <input class="addInput" id="stock" type="number" placeholder="Stock (unidades)"/>
             <select class="categories" name="category">
                 <option value="none">None</option>
@@ -72,9 +62,9 @@
                 <option value="cleanse">Clenasers</option>
                 <option value="care">Care</option>
             </select>
-            <input class="addInput" id="price" type="number" placeholder="Precio"/>
+            <input class="addInput" id="price" type="number" placeholder="Price"/>
             <input class="addInput" type="file" name="images" multiple accept=".png, .jpg, .jpeg">
-            <input class="addBtn" type="submit" value="Agregar">
+            <input class="addBtn" type="submit" value="Add Product">
             
         </form>
 

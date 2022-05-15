@@ -34,7 +34,9 @@ function renderProduct(item) {
     productInfoSection.innerHTML = `
     <h1 class="product__name">${item.name}</h1>
     <p class="product__description">${item.description}</p>
-    <h3 class="product__price">$${currencyFormat(item.price)}</h3>
+    <p class="product__howToUse">How to use:</p>
+    <p class="product__howTo">${item.howToUse}</p>
+    <h3 class="product__price">${currencyFormat(item.price)}</h3>
     <button class="product__cart">Add to cart</button>`;
 
     if (item.images.length > 1) {
