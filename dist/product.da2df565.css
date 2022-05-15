@@ -25,14 +25,14 @@
 
 .product__mainImage {
   width: 100%;
-  height: 800px;
+  height: 700px;
   object-fit: contain;
 }
 
 .product__gallery img {
   width: 100px;
   cursor: pointer;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .product__name {

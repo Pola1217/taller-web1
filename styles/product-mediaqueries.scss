@@ -1,5 +1,9 @@
+$breakpoint-tablet: 1180px;
+@media all and (max-width: 1180px) {
 .product__info{
-    margin-bottom: 300px  !important;
+    margin-bottom: 100px  !important;
+    display: inline;
+    width: 100%;
 }
 
 .product{
@@ -64,6 +68,68 @@
 
         &:hover{
             background-color: #e40000  !important;
+        }
+    }
+}
+}
+
+@media all and (max-width:414px) {
+    .product__info{
+        margin-bottom: 300px  !important;
+    }
+    
+    .product{
+        align-items: baseline !important;
+        display: flex !important;
+        padding-top: 0%;
+        padding-left: 4% !important;
+        flex-direction: column !important;
+
+        &__mainImage {
+            margin-top: 10% !important;
+            margin-bottom: 5% !important;
+            height: 480px  !important;
+            
+        }
+
+        &__gallery {
+            img {
+                width: 60px !important;
+                margin-bottom: 10px !important;
+                cursor: pointer !important;
+            }
+        }
+    
+        &__name{
+            margin-left: 0%  !important;
+        }
+    
+        &__description{
+            margin-top: 5%  !important;
+            margin-left: 0%  !important;
+        }
+    
+        &__howToUse{
+            width: 30%  !important;
+            margin-top: 5%  !important;
+            margin-left: 0%  !important;
+            }
+
+        &__howTo{
+            margin-top: 5%  !important;
+            margin-left: 0%  !important;
+            }
+    
+        &__price{
+            width: 100%  !important;
+            margin-top: 5%  !important;
+            
+        }
+    
+        &__cart{
+            margin-top: 5%  !important;
+            margin-left: 0%  !important;
+          
         }
     }
 }
