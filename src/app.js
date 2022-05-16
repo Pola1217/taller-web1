@@ -28,7 +28,7 @@ if(loginForm != null) {
     const password = loginForm.password.value;
   
     login(auth, email, password);
-  
+    window.location.href = "/index.html";
   });
 }
 
