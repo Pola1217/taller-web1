@@ -26,9 +26,21 @@ if(loginForm != null) {
   
     const email = loginForm.email.value;
     const password = loginForm.password.value;
-  
     login(auth, email, password);
-    window.location.href = "/index.html";
+
+    const userInfo = {
+      email,
+      password,
+      isAdmin: true,
+    };
+    //window.location.href = "/index.html";
+
+    if(userInfo.isAdmin){
+      window.location.href = "./admin.html"
+  }else{
+    window.location.href = "./index.html"
+
+  }
   });
 }
 

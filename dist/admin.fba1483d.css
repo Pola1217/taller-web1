@@ -18,15 +18,13 @@
   src: url("Windsor-Bold.cada40e6.ttf");
 }
 
-.title {
-  color: #000;
-  align-items: center;
-  font-family: SuisseBook;
-  font-size: 40px;
-  position: relative;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.loginForm {
+.add_product_from {
   flex-direction: column;
   align-items: center;
   display: flex;
@@ -34,7 +32,15 @@
   top: 157px;
 }
 
-.loginInput {
+.add_product_from__title {
+  color: #000;
+  align-items: center;
+  font-family: SuisseBook;
+  font-size: 1.5em;
+  position: relative;
+}
+
+.add_product_from__addInput, .add_product_from__categories {
   box-sizing: border-box;
   width: 50%;
   height: 20%;
@@ -49,7 +55,7 @@
   line-height: 21px;
 }
 
-.loginBtn {
+.addBtn {
   text-align: center;
   color: #000;
   width: 20%;
@@ -66,7 +72,7 @@
   font-weight: normal;
 }
 
-.SignIn {
+.logIn {
   color: #8f8f8f;
   justify-content: center;
   margin-top: 5px;
@@ -77,4 +83,4 @@
   line-height: 21px;
 }
 
-/*# sourceMappingURL=login.e57ab8ae.css.map */
+/*# sourceMappingURL=admin.fba1483d.css.map */

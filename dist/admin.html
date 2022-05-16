@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
 
-    <link rel="stylesheet" href="/admin.0f288229.css">
+    <link rel="stylesheet" href="/admin.fba1483d.css">
     <link rel="stylesheet" href="/admin.2f2663b0.css">  
     <link rel="stylesheet" href="/admin.3b6bd90a.css">
 
@@ -46,22 +46,21 @@
     
         </nav>
         </header>
-            <form id="add_product_from">
-            
-            <h1 id="title">Agrega un nuevo producto</h1>
-
-            <input class="addInput" id="name" type="text" placeholder="Name">
-            <textarea class="addInput" id="description" type="text" placeholder="Description"></textarea>
-            <textarea class="addInput" id="howToUse" type="text" placeholder="How To Use"></textarea>
-            <input class="addInput" id="stock" type="number" placeholder="Stock (unidades)">
-            <select class="categories" name="category">
+        
+            <form class="add_product_from" id="add_product_from">
+            <h1 class="add_product_from__title">Agrega un nuevo producto</h1>
+            <input class="add_product_from__addInput" id="name" type="text" placeholder="Name">
+            <textarea class="add_product_from__addInput" id="description" type="text" placeholder="Description"></textarea>
+            <textarea class="add_product_from__addInput" id="howToUse" type="text" placeholder="How To Use"></textarea>
+            <input class="add_product_from__addInput" id="stock" type="number" placeholder="Stock (unidades)">
+            <select class="add_product_from__categories" name="category">
                 <option value="none">None</option>
                 <option value="kits">Kits</option>
                 <option value="cleanse">Clenasers</option>
                 <option value="care">Care</option>
             </select>
-            <input class="addInput" id="price" type="number" placeholder="Price">
-            <input class="addInput" type="file" name="images" multiple="" accept=".png, .jpg, .jpeg">
+            <input class="add_product_from__addInput" id="price" type="number" placeholder="Price">
+            <input class="add_product_from__addInput" type="file" name="images" multiple="" accept=".png, .jpg, .jpeg">
             <input class="addBtn" type="submit" value="Add Product">
             
         </form>
