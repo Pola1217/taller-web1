@@ -559,14 +559,6 @@ if (loginForm != null) loginForm.addEventListener("submit", (e)=>{
     const email = loginForm.email.value;
     const password = loginForm.password.value;
     _auth1.login(auth, email, password);
-    const userInfo = {
-        email,
-        password,
-        isAdmin: true
-    };
-    //window.location.href = "/index.html";
-    if (userInfo.isAdmin) window.location.href = "./admin.html";
-    else window.location.href = "./index.html";
 });
 //submit signin 
 if (createUserForm != null) createUserForm.addEventListener("submit", async (e)=>{
