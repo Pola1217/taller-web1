@@ -23,6 +23,7 @@ async function createFirebaseOrder (db, userId, order) {
         await setDoc(doc(db, "order", userId), {
             order
         });
+        console.log(db);
     } catch (e) {
         console.log(e);
     }

@@ -5,9 +5,9 @@ $sub-font: 'SuisseMono';
 @mixin titles {
     font-family: $main-font;
     color: $font-color;
-    font-size: 1.2em;
+    font-size: 2em;
     padding-top: 7%;
-    margin-left: 50px;
+    margin-left: 5%;
 }
 @mixin subtitles {
     font-family: $main-font;
@@ -51,13 +51,6 @@ ul{
     align-items: center;    
 }
 
-.titles{
-    display: flex;
-    align-items: center;
-    gap: 720px;
-    @include titles();
-}
-
 .cart-checkout{
     display: flex;
     margin-top: 1%;
@@ -66,7 +59,13 @@ ul{
 .CART{
     width: 44%;
     margin-left: 40px;
+
     
+    &__title{
+        @include titles();
+        margin-top: 5%;
+        margin-bottom: 2%;
+    }
 }
 
 .total{
@@ -77,14 +76,14 @@ ul{
     margin-top: 10%;
     padding-left: 55%;
     padding-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     font-family: 'SuisseMono';
 }
 
 .product{
     width: 100%;
     padding-left: 5%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
     display:flex;
     align-items: center;
 
@@ -132,6 +131,11 @@ ul{
     height: 100%;
     margin-left: 15%;
     border-left: 1px solid #adadad;
+
+    &__title{
+        @include titles();
+        margin-top: 5%;
+    }
 
     &__subtitle{
         @include subtitles();

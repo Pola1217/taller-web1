@@ -16,4 +16,25 @@
   }
 }
 
+@media (max-width: 414px) {
+  header {
+    height: 50px !important;
+    position: fixed !important;
+  }
+
+  .logo {
+    width: 35% !important;
+    height: 35% !important;
+    left: 35% !important;
+  }
+
+  .menu_icon {
+    display: block !important;
+  }
+
+  .menu__item {
+    display: none !important;
+  }
+}
+
 /*# sourceMappingURL=admin.3b6bd90a.css.map */

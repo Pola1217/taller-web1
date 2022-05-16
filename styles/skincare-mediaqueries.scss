@@ -1,19 +1,10 @@
-$breakpoint-tablet: 1180px;
 @media all and (max-width: 1180px) {
 
     $font-color: #000000!important;
 
     @mixin filter {
-        font-size: 0.95em !important;
-        line-height: 21px!important;
-        background: #FFFFFF!important;
-        border: 1px solid #000000!important;
-        box-sizing: border-box!important;
         width: 20%!important;
-        height: 3%!important;
         margin: 12% 2% 1% 0% !important;
-        padding: 5px!important;
-        border-radius: 5px!important;
     }
 
     .title{
@@ -42,16 +33,18 @@ $breakpoint-tablet: 1180px;
     }
     
     .product{
-        margin-bottom: 25%!important;
     
+        margin: 9px;
+        //padding:0px 30px 30px 0px !important;
+
         &__image{
             width: 100%!important;
-            height: 450px!important;
+            height: 350px!important;
             object-fit: contain!important;
         }
         
         &__name {
-            margin-left: 2%!important;
+            margin-left: 8%!important;
             margin-top: 2%!important;
             font-family: 'SuisseBook'!important;
             font-size: 1.25em!important;
@@ -63,7 +56,7 @@ $breakpoint-tablet: 1180px;
         }
     
         &__price {
-            margin-left: 2%!important;
+            margin-left: 8%!important;
             margin-top: 2%!important;
             font-family: 'SuisseBook'!important;
             font-size: 1.25em!important;
@@ -80,6 +73,93 @@ $breakpoint-tablet: 1180px;
             background-color:#ff5f37!important;
             border: none!important;
             margin: 20px 0 0 55px!important;
+    
+            &:hover{
+                background-color: #e40000!important;
+            }
+            &:disabled {
+                background-color: #720000!important;
+            }
+        }
+    
+    }
+
+}
+
+@media all and (max-width:414px) {
+
+
+    $font-color: #000000!important;
+
+    @mixin filter {
+        width: 20%!important;
+        margin-top: 30%!important;
+        margin-bottom: 0% !important;
+        padding: 0% !important;
+    }
+
+    .title{
+        font-family: 'Windsor'!important;
+        font-size: 1.5em!important;
+        margin-left: 30px!important;
+    }
+    
+    .filters {
+        margin-left: 5%!important;
+    }
+
+    #category {
+        @include filter();
+    }
+    
+    #order{
+        @include filter();
+    }
+
+    .products{
+        grid-template-columns: repeat(2, 5fr)!important;
+    }
+    
+    .product{
+    
+        padding: 0px 0px 0px 0px !important;
+
+        &__image{
+            width: 100%!important;
+            height: 450px!important;
+            object-fit: contain!important;
+        }
+        
+        &__name {
+            margin-left: 8%!important;
+            margin-top: 2%!important;
+            font-family: 'SuisseBook'!important;
+            font-size: 1.25em!important;
+            color: $font-color!important;
+        }
+    
+        &__category {
+            display: none!important;
+        }
+    
+        &__price {
+            margin-left: 8%!important;
+            margin-top: 2%!important;
+            font-family: 'SuisseBook'!important;
+            font-size: 1.25em!important;
+            color: $font-color!important;
+        }
+    
+        &__cart {
+            width: 100%!important;
+            height: 20%!important;
+            padding: 10px!important;
+            font-family: 'SuisseMono'!important;
+            color: rgb(255, 255, 255)!important;
+            font-size: 0.85em!important;
+            background-color:#ff5f37!important;
+            border: none!important;
+            margin: 20px 0 0 5px!important;
     
             &:hover{
                 background-color: #e40000!important;

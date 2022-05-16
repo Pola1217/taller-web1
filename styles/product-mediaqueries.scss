@@ -1,17 +1,11 @@
-$breakpoint-tablet: 1180px;
 @media all and (max-width: 1180px) {
-.product__info{
-    margin-bottom: 100px  !important;
-    display: inline;
-    width: 100%;
-}
+
 
 .product{
-   
     padding-left: 4%  !important;
     
     &__mainImage {
-        height: 600px  !important;
+        height: 650px  !important;
     }
 
 
@@ -20,39 +14,18 @@ $breakpoint-tablet: 1180px;
     }
 
     &__description{
-        width: 100%  !important;
-        margin-top: 10%  !important;
         margin-left: 30%  !important;
-        font-size: 1em  !important;
-        
-        font-family: 'Suisse'  !important;
     }
 
     &__howToUse{
-        width: 60%  !important;
-        margin-top: 10%  !important;
         margin-left: 30%  !important;
-        font-size: 1em  !important;
-        
-        font-family: 'Suisse'  !important;
-        border-bottom: 2px solid #000000  !important;
     }
     &__howTo{
-        width: 100%  !important;
-        margin-top: 10%  !important;
         margin-left: 30%  !important;
-        font-size: 1em  !important;
-        
-        font-family: 'Suisse'  !important;
     }
 
     &__price{
-        width: 100%  !important;
-        margin-top: 10%  !important;
         margin-left: 30%  !important;
-        font-family: 'SuisseBook'  !important;
-        font-size: 1.25em  !important;
-        
     }
 
     &__cart{
@@ -75,7 +48,9 @@ $breakpoint-tablet: 1180px;
 
 @media all and (max-width:414px) {
     .product__info{
-        margin-bottom: 300px  !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 30px  !important;
     }
     
     .product{
@@ -110,19 +85,17 @@ $breakpoint-tablet: 1180px;
         }
     
         &__howToUse{
-            width: 30%  !important;
-            margin-top: 5%  !important;
-            margin-left: 0%  !important;
+            display: none  !important;
             }
 
         &__howTo{
-            margin-top: 5%  !important;
-            margin-left: 0%  !important;
+            display: none  !important;
             }
     
         &__price{
             width: 100%  !important;
             margin-top: 5%  !important;
+            margin-left: 0% !important;
             
         }
     

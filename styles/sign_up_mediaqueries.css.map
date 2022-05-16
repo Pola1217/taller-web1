@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,MAAM,CAAC,GAAG,MAAM,SAAS,EAAE,KAAK;EAE5B,AAAA,MAAM,CAAC;IACH,QAAQ,EAAE,mBAAmB;IAC7B,WAAW,EAAE,iBAAiB;IAC9B,WAAW,EAAE,qBAAqB;IAClC,UAAU,EAAE,iBAAiB;IAC7B,SAAS,EAAE,gBAAgB;IAC3B,KAAK,EAAE,kBAAkB;GAC5B",
+    "sources": [
+        "sign_up_mediaqueries.scss"
+    ],
+    "names": [],
+    "file": "sign_up_mediaqueries.css"
+}

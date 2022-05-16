@@ -535,9 +535,16 @@ const cartSection = document.getElementById("cart");
 const totalSection = document.getElementById("total");
 const checkoutForm = document.getElementById("checkout__Form");
 let cart = [];
+let total = 0;
+let order = [];
 function loadCart(cart1) {
-    let total = 0;
     cart1.forEach((product)=>{
+        const { name , price  } = product;
+        const orderProduct = {
+            name,
+            price
+        };
+        order.push(orderProduct);
         renderProduct(product);
         total += parseInt(product.price);
     });
@@ -579,7 +586,6 @@ checkoutForm.addEventListener("submit", async (e)=>{
     const cardNum = checkoutForm.card.value;
     const expiration = checkoutForm.expiration.value;
     const code = checkoutForm.code.value;
-    let order = [];
     const userInfo = {
         name,
         address,
@@ -597,11 +603,14 @@ checkoutForm.addEventListener("submit", async (e)=>{
         order,
         total
     };
+    //console.log(total);
     await _cart.createFirebaseOrder(_app.db, userLogged.uid, fullOrder);
     alert("ORDER READY");
-    window.location.href = "/index.html";
-/*deleteCart(db, userLogged.uid);
-    deleteMyLocalCart();*/ });
+    //window.location.href = "/index.html";
+    _cart.deleteCart(_app.db, userLogged.uid);
+    _utils.deleteMyLocalCart();
+    checkoutForm.reset();
+});
 _auth.onAuthStateChanged(_app.auth, async (user)=>{
     if (user) {
         // User is signed in, see docs for a list of available properties
@@ -644,6 +653,7 @@ async function createFirebaseOrder(db, userId, order) {
         await _firestore.setDoc(_firestore.doc(db, "order", userId), {
             order
         });
+        console.log(db);
     } catch (e) {
         console.log(e);
     }

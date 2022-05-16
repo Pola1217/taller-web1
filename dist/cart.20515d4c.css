@@ -1,7 +1,11 @@
 @media (max-width: 1180px) {
-  .titles {
-    gap: 300px !important;
-    padding-top: 10% !important;
+  .CART {
+    margin-left: 30px !important;
+  }
+
+  .CART__title {
+    margin-top: 25% !important;
+    margin-right: 20% !important;
   }
 
   .total {
@@ -54,8 +58,86 @@
     margin-left: 30% !important;
   }
 
+  .checkout__title {
+    margin-top: 15% !important;
+  }
+
   .checkout__submit {
     margin: 20px 0 0 65px !important;
+  }
+
+  .checkout__submit:hover {
+    background-color: #e40000 !important;
+  }
+}
+
+@media (max-width: 414px) {
+  .CART {
+    margin-left: 30px !important;
+  }
+
+  .CART__title {
+    margin-top: 30% !important;
+    margin-right: 20% !important;
+  }
+
+  .cart-checkout {
+    flex-flow: column !important;
+    place-content: stretch center !important;
+    align-items: flex-start !important;
+    margin-top: 0% !important;
+    display: flex !important;
+  }
+
+  .total {
+    width: 100% !important;
+  }
+
+  .product {
+    width: 100% !important;
+    align-items: center !important;
+    padding-bottom: 1% !important;
+    padding-left: 5% !important;
+    display: flex !important;
+  }
+
+  .product__image {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: contain !important;
+  }
+
+  .product__name {
+    width: 100% !important;
+    margin-left: 5% !important;
+    font-family: SuisseBook !important;
+    font-size: 1.2em !important;
+  }
+
+  .product__price {
+    width: 100% !important;
+    margin-top: 10% !important;
+    margin-left: 10% !important;
+    font-family: SuisseMono !important;
+    font-size: .9em !important;
+  }
+
+  .product__delete {
+    padding: 15% !important;
+  }
+
+  .checkout {
+    width: 90% !important;
+    border: none !important;
+    margin-left: 0% !important;
+  }
+
+  .checkout__title {
+    margin-top: 5%;
+  }
+
+  .checkout__submit {
+    margin: 20px 15px 0 65px !important;
   }
 
   .checkout__submit:hover {

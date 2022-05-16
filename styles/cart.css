@@ -21,21 +21,6 @@ ul {
           align-items: center;
 }
 
-.titles {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 720px;
-  font-family: "SuisseBook";
-  color: #000000;
-  font-size: 1.2em;
-  padding-top: 7%;
-  margin-left: 50px;
-}
-
 .cart-checkout {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -46,6 +31,16 @@ ul {
 .CART {
   width: 44%;
   margin-left: 40px;
+}
+
+.CART__title {
+  font-family: "SuisseBook";
+  color: #000000;
+  font-size: 2em;
+  padding-top: 7%;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
 
 .total {
@@ -61,14 +56,14 @@ ul {
   margin-top: 10%;
   padding-left: 55%;
   padding-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   font-family: 'SuisseMono';
 }
 
 .product {
   width: 100%;
   padding-left: 5%;
-  padding-bottom: 1%;
+  padding-bottom: 2%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,6 +116,15 @@ ul {
   height: 100%;
   margin-left: 15%;
   border-left: 1px solid #adadad;
+}
+
+.checkout__title {
+  font-family: "SuisseBook";
+  color: #000000;
+  font-size: 2em;
+  padding-top: 7%;
+  margin-left: 5%;
+  margin-top: 5%;
 }
 
 .checkout__subtitle {

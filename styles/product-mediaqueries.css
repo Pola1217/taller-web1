@@ -1,46 +1,24 @@
 @media all and (max-width: 1180px) {
-  .product__info {
-    margin-bottom: 100px  !important;
-    display: inline;
-    width: 100%;
-  }
   .product {
     padding-left: 4%  !important;
   }
   .product__mainImage {
-    height: 600px  !important;
+    height: 650px  !important;
   }
   .product__name {
     margin-left: 30%  !important;
   }
   .product__description {
-    width: 100%  !important;
-    margin-top: 10%  !important;
     margin-left: 30%  !important;
-    font-size: 1em  !important;
-    font-family: 'Suisse'  !important;
   }
   .product__howToUse {
-    width: 60%  !important;
-    margin-top: 10%  !important;
     margin-left: 30%  !important;
-    font-size: 1em  !important;
-    font-family: 'Suisse'  !important;
-    border-bottom: 2px solid #000000  !important;
   }
   .product__howTo {
-    width: 100%  !important;
-    margin-top: 10%  !important;
     margin-left: 30%  !important;
-    font-size: 1em  !important;
-    font-family: 'Suisse'  !important;
   }
   .product__price {
-    width: 100%  !important;
-    margin-top: 10%  !important;
     margin-left: 30%  !important;
-    font-family: 'SuisseBook'  !important;
-    font-size: 1.25em  !important;
   }
   .product__cart {
     width: 100%  !important;
@@ -60,7 +38,9 @@
 
 @media all and (max-width: 414px) {
   .product__info {
-    margin-bottom: 300px  !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 30px  !important;
   }
   .product {
     -webkit-box-align: baseline !important;
@@ -94,17 +74,15 @@
     margin-left: 0%  !important;
   }
   .product__howToUse {
-    width: 30%  !important;
-    margin-top: 5%  !important;
-    margin-left: 0%  !important;
+    display: none  !important;
   }
   .product__howTo {
-    margin-top: 5%  !important;
-    margin-left: 0%  !important;
+    display: none  !important;
   }
   .product__price {
     width: 100%  !important;
     margin-top: 5%  !important;
+    margin-left: 0% !important;
   }
   .product__cart {
     margin-top: 5%  !important;

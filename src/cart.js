@@ -8,11 +8,18 @@ const cartSection = document.getElementById("cart");
 const totalSection = document.getElementById("total");
 const checkoutForm = document.getElementById("checkout__Form");
 let cart = [];
-
+let total = 0;
+let order = [];
 
 function loadCart(cart) {
-    let total = 0;
+    
     cart.forEach(product => {
+        const { name, price } = product;
+        const orderProduct = {
+            name,
+            price
+        }
+        order.push(orderProduct);
         renderProduct(product);
         total += parseInt(product.price);
     });
@@ -72,8 +79,6 @@ checkoutForm.addEventListener("submit", async (e) => {
     const expiration = checkoutForm.expiration.value;
     const code = checkoutForm.code.value;
 
-    let order = [];
-
 
     const userInfo = {
        name,
@@ -95,13 +100,16 @@ checkoutForm.addEventListener("submit", async (e) => {
         total
     }
 
-       await createFirebaseOrder(db, userLogged.uid, fullOrder);
+    //console.log(total);
+
+    await createFirebaseOrder(db, userLogged.uid, fullOrder);
 
     alert("ORDER READY");
-    window.location.href = "/index.html";
+    //window.location.href = "/index.html";
 
-    /*deleteCart(db, userLogged.uid);
-    deleteMyLocalCart();*/
+    deleteCart(db, userLogged.uid);
+    deleteMyLocalCart();
+    checkoutForm.reset();
 });
 
 onAuthStateChanged(auth, async (user) => {

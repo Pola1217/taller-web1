@@ -15,4 +15,22 @@
     padding: 5px 5px !important;
   }
 }
+
+@media all and (max-width: 414px) {
+  header {
+    position: fixed !important;
+    height: 50px !important;
+  }
+  .logo {
+    width: 35% !important;
+    height: 35% !important;
+    left: 35% !important;
+  }
+  .menu_icon {
+    display: block !important;
+  }
+  .menu__item {
+    display: none !important;
+  }
+}
 /*# sourceMappingURL=header-mediaqueries.css.map */

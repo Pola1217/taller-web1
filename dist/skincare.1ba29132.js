@@ -683,6 +683,7 @@ async function createFirebaseOrder(db, userId, order) {
         await _firestore.setDoc(_firestore.doc(db, "order", userId), {
             order
         });
+        console.log(db);
     } catch (e) {
         console.log(e);
     }
