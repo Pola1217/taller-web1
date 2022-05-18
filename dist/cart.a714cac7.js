@@ -678,9 +678,9 @@ parcelHelpers.export(exports, "deleteMyLocalCart", ()=>deleteMyLocalCart
 );
 parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
 );
-const addProductToCart = (cart)=>{
+function addProductToCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
-};
+}
 function getMyLocalCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];
