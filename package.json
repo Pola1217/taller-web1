@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel ./*.html  --no-cache",
-    "build": "parcel build --public-url ././*.html"
+    "build": "parcel build --public-url ./*.html"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Pola1217/taller-web1/issues"
   },
-  "homepage": "https://github.com/Pola1217/taller-web1#readme",
+  "homepage": "https://github.com/Pola1217/taller-web1",
   "description": "",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.5.0",
