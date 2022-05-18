@@ -2,7 +2,7 @@ import { db, auth } from "./app";
 import { onAuthStateChanged } from "firebase/auth";
 import { getProducts } from "./functions/products";
 import { createFirebaseCart, getFirebaseCart  } from "./functions/cart";
-import { addProductToCart, getMyLocalCart, currencyFormat } from "./utils";
+import { addProductToCart, currencyFormat } from "./utils";
 
 const productSection = document.getElementById("products");
 const categoryFilter = document.getElementById("category");
@@ -66,10 +66,6 @@ function renderProduct(item) {
 
     });
 }
-
-async function addProductToCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-};
 
 async function removeProduct(productId) {
     const newCart = cart.filter(product => product.id !== productId);

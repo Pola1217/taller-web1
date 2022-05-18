@@ -574,9 +574,9 @@ function renderProduct(item) {
         productCartBtn.innerText = "Product added";
     });
 }
-async function addProductToCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
+const addProductToCart = (cart1)=>{
+    localStorage.setItem("cart", JSON.stringify(cart1));
+};
 async function removeProduct(productId) {
     const newCart = cart.filter((product)=>product.id !== productId
     );
@@ -708,9 +708,9 @@ parcelHelpers.export(exports, "deleteMyLocalCart", ()=>deleteMyLocalCart
 );
 parcelHelpers.export(exports, "currencyFormat", ()=>currencyFormat
 );
-async function addProductToCart(cart) {
+const addProductToCart = (cart)=>{
     localStorage.setItem("cart", JSON.stringify(cart));
-}
+};
 function getMyLocalCart() {
     const myCart = localStorage.getItem("cart");
     return myCart ? JSON.parse(myCart) : [];

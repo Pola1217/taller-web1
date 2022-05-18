@@ -1,4 +1,4 @@
-async function addProductToCart(cart) {
+function addProductToCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
 
